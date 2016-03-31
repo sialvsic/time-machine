@@ -19,9 +19,9 @@ gulp.task('watchify', function(done) {
         debug: true
       };
       var w = watchify(browserify(opts)
-          .transform('babelify', {
-            presets: ['es2015', 'react']
-          }));
+        .transform('babelify', {
+          presets: ['es2015', 'react']
+        }));
 
       (function(w, entry) {
         w.on('update', function() {
@@ -29,23 +29,23 @@ gulp.task('watchify', function(done) {
           console.log('Start fast build...');
 
           w.bundle()
-              .pipe(source(entry))
-              .pipe(rename(function(path) {
-                path.dirname = "";
-              }))
-              .pipe(gulp.dest('./public/scripts/'))
-              .on('end', function() {
-                console.log('Complete fast build...' + (new Date().getTime() - start) + 'ms');
-              });
+            .pipe(source(entry))
+            .pipe(rename(function(path) {
+              path.dirname = "";
+            }))
+            .pipe(gulp.dest('./public/scripts/'))
+            .on('end', function() {
+              console.log('Complete fast build...' + (new Date().getTime() - start) + 'ms');
+            });
         })
       })(w, entry);
 
       return w.bundle()
-          .pipe(source(entry))
-          .pipe(rename(function(path) {
-            path.dirname = "";
-          }))
-          .pipe(gulp.dest('./public/scripts/'));
+        .pipe(source(entry))
+        .pipe(rename(function(path) {
+          path.dirname = "";
+        }))
+        .pipe(gulp.dest('./public/scripts/'));
     });
 
     es.merge(tasks).on('end', done);
