@@ -34,17 +34,10 @@ var Navigation = React.createClass({
                       </button>
                     </form>
                   </div>
-
                   <div className="nav-account col-lg-3 col-md-3 col-sm-3">
 
-                    <ul className="nav navbar-nav ">
-                      <li><a href="#">登录</a></li>
-                      <li><a href="#">注册</a></li>
-                      <li><a href="#">上传</a></li>
-                    </ul>
-
+                    {this.props.children}
                   </div>
-
                 </div>
               </div>
             </div>
