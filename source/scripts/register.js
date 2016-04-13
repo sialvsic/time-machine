@@ -1,23 +1,42 @@
 'use strict';
 
 var React = require('react');
-var ReactDom = require('react-dom');
-var RegisterApp = require('./components/register-page/register-app.component');
+var ReactDOM = require('react-dom');
 var RegisterForm = require('./components/register-page/register-form.component');
 var LoginForm = require('./components/register-page/login-form.component');
 var LoginInfo = require('./components/register-page/login-info.component');
 var RegisterAgreement = require('./components/register-page/register-agreement.component');
 var RegisterPassword = require('./components/register-page/register-password.component');
 
-ReactDom.render(
-    <RegisterApp>
-      <RegisterForm>
-        <RegisterPassword/>
-      </RegisterForm>
-      <LoginForm/>
-      <LoginInfo/>
-      <RegisterAgreement/>
-    </RegisterApp>,
+var Register = React.createClass({
+  componentWillMount: ()=> {
+    window.onload = function () {
+      $(".connect p").eq(0).animate({
+        "left": "0%"
+      }, 600);
+      $(".connect p").eq(1).animate({
+        "left": "0%"
+      }, 400);
+    }
+  },
+
+
+  render: ()=> {
+    return (
+        <div className="row">
+          <RegisterForm>
+            <RegisterPassword/>
+          </RegisterForm>
+          <LoginForm/>
+          <LoginInfo/>
+          <RegisterAgreement/>
+        </div>
+    )
+  }
+});
+
+ReactDOM.render(
+    <Register/>,
     document.getElementById('register-container')
 );
 

@@ -8,11 +8,12 @@ var request = require('superagent');
 var constant = require('../../../../mixin/constant');
 var constraint = require('../../../../mixin/register-constraint');
 var async = require('async');
-var errorHandler = require('../../../../tools/error-handler');
+var errorHandler = require('../../../../middleware/error-handler');
 
 var RegisterStore = Reflux.createStore({
   listenables: RegisterActions,
 
+  //对邮箱进行验证
   onCheckEmail: function (value, done) {
     return request
         .get('/register/validate-email')
@@ -30,6 +31,7 @@ var RegisterStore = Reflux.createStore({
         });
   },
 
+  //对手机号码进行验证
   onCheckMobilePhone: function (value, done) {
     return request
         .get('/register/validate-mobile-phone')
@@ -60,7 +62,7 @@ var RegisterStore = Reflux.createStore({
         .end((err, req) => {
           var info = req.body;
           if (info.status === constant.httpCode.OK) {
-            this.onInitialUserQuiz();
+            page('index.html');
           } else {
             var emailExist = info.data.isEmailExist ? '该邮箱已被注册' : '';
             var mobilePhoneExist = info.data.isMobilePhoneExist ? '该手机号已被注册' : '';
@@ -74,29 +76,6 @@ var RegisterStore = Reflux.createStore({
         });
   },
 
-
-  onInitialUserQuiz: function () {
-    async.series({
-      initializeQuizzes: (done) => {
-        request.get('/user-initialization/initializeQuizzes')
-            .set('Content-Type', 'application/json')
-            .use(errorHandler)
-            .end(function (err) {
-              if (err) {
-                done(err);
-              } else {
-                done(null, true);
-              }
-            });
-      }
-    }, function (err, data) {
-      if(data.initializeQuizzes) {
-        page('user-center.html');
-      } else {
-        console.log(err);
-      }
-    });
-  },
 
   onChangeState: function (isShowToggle) {
     this.trigger({

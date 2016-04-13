@@ -5,13 +5,13 @@ var LoginActions = require('../../actions/register-page/login-actions');
 var request = require('superagent');
 var constant = require('../../../../mixin/constant');
 var page = require('page');
-var errorHandler = require('../../../../tools/error-handler');
+var errorHandler = require('../../../../middleware/error-handler');
 
 
 var LoginStore = Reflux.createStore({
   listenables: LoginActions,
 
-  onLogin: function (phoneEmail, loginPassword){
+  onLogin: function (phoneEmail, loginPassword) {
     request.post('/login')
         .set('Content-Type', 'application/json')
         .send({
@@ -23,19 +23,19 @@ var LoginStore = Reflux.createStore({
           var data = JSON.parse(req.text);
           if (data.status === constant.httpCode.OK) {
             this.trigger({
-              loginFailed : false
+              loginFailed: false
             });
             page('dashboard.html');
           } else {
             this.trigger({
               clickable: false,
-              loginFailed : true
+              loginFailed: true
             });
           }
         });
   },
 
-  onChangeState: function (isLoginState){
+  onChangeState: function (isLoginState) {
     this.trigger({
       isLoginState: !isLoginState,
       agree: false,

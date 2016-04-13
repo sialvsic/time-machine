@@ -1,5 +1,6 @@
 'use strict';
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Reflux = require('reflux');
 var validate = require('validate.js');
 var constraint = require('../../../../mixin/register-constraint');
@@ -54,11 +55,11 @@ var RegisterForm = React.createClass({
   validate: function (event) {
     var target = event.target;
     var value = target.value.trim();
-    var name = target.name;
+    var name = target.name;    //name  属性 mobilePhone  或者 email
     var valObj = {};
     valObj[name] = value;
 
-    var result = validate(valObj, constraint);
+    var result = validate(valObj, constraint);     //Object {email: Array[1], mobilePhone: Array[1], password: Array[1]}
     var error = getError(result, name);
     var stateObj = {};
     stateObj[name + 'Error'] = error;
