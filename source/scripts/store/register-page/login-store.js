@@ -25,7 +25,8 @@ var LoginStore = Reflux.createStore({
             this.trigger({
               loginFailed: false
             });
-            page('dashboard.html');
+            page('index.html');
+
           } else {
             this.trigger({
               clickable: false,
