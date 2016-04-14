@@ -2,7 +2,6 @@
 
 var express = require('express');
 var router = express.Router();
-var request = require('superagent');
 var lang = require('../../mixin/lang-message/chinese');
 var constant = require('../../mixin/constant').backConstant;
 var async = require('async');
