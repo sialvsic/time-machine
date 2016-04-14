@@ -4,7 +4,7 @@
   "description": "this is a project about my end-design",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node ./tools/seeds/refresh.js && nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
