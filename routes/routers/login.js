@@ -31,6 +31,7 @@ function checkLoginInfo(account, password) {
   return pass;
 }
 
+//登录
 router.post('/', (req, res, next)=> {
   var account = req.body.account;
   var password = req.body.password;
@@ -45,7 +46,6 @@ router.post('/', (req, res, next)=> {
 
     //根据输入的account 来判断是邮箱还是手机号
     //查询mongodb 确定是否存在该账户,然后设置session
-
     if (account.indexOf('@') !== -1) {
       //说明是邮箱
       User.findOne({email: account}, (err, doc)=> {
@@ -77,6 +77,11 @@ router.post('/', (req, res, next)=> {
           return;
         } else {
           if (doc !== null && doc.password === password) {
+            req.session.user = {
+              id: doc._id
+              //userInfo: result.body.userInfo,
+              //token: result.headers.token
+            };
             res.send({
               status: httpStatus.OK  //200 代表已经注册
             })
