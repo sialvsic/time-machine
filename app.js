@@ -29,25 +29,28 @@ app.use(session({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+
 app.use(multer({
   dest: './public/vedio',
-  filefilet: function () {
 
-  },
   onFileUploadStart: function (file) {
-    console.log("upload start");
+    //console.log("upload start");
+    //return false;
   },
 
   onFileUploadComplete: function (file) {
-    console.log("upload complete");
+    //console.log("upload complete");
+    //console.log(file);
+    return;
   },
   rename: function (fieldname, filename) {
 
-    console.log(fieldname);
-    console.log(filename);
+    //console.log(fieldname);
+    //console.log(filename);
     return filename;
   }
 }));
+
 
 app.use(express.static(__dirname + '/public'));
 
