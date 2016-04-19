@@ -9,7 +9,6 @@ var _timeBase = 90;
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-  userId: Number,
   email: String,
   mobilePhone: String,
   password: String,
