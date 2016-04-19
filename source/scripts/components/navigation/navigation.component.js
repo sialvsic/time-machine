@@ -17,7 +17,7 @@ var Navigation = React.createClass({
                       <span className="icon-bar"/>
                       <span className="icon-bar"/>
                     </button>
-                    <a className="navbar-brand" href="#">时光机</a>
+                    <a className="navbar-brand" href="index.html">时光机</a>
                   </div>
                 </div>
 
