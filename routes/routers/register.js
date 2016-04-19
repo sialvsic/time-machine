@@ -82,7 +82,8 @@ router.post('/', (req, res, next) => {
           done(null, doc);
         });
       }, (data, done)=> {
-        //记录一条登录信息
+        //记录一条登录信息   存储到一条记录登录信息的表中
+        
         done(null, data);
       }, (data, done)=> {
         //设置session
