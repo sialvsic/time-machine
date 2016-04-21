@@ -22,7 +22,9 @@ var vedioSchema = new Schema({
   label: String,          //视频标签
   description: String,    //视频描述
   isDetailsInfoComplete: {type: Boolean, default: false},       //是否信息完整
-  createTime: Number      //视频上传的时间
+  screenshotsPath: String,  //视频截图的文件
+  createTime: Number,      //视频上传的时间
+  isChecked: {type: Boolean, default: false}        //是否通过审查
 
 });
 
