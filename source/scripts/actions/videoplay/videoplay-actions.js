@@ -2,8 +2,8 @@
 
 var Reflux = require('reflux');
 
-var UploadActions = Reflux.createActions([
-  'submitInfo'
+var VideoplayActions = Reflux.createActions([
+  'getVideo'
 ]);
 
-module.exports = UploadActions;
+module.exports = VideoplayActions;
