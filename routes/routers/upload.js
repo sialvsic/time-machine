@@ -9,11 +9,11 @@ var ffmpeg = require('fluent-ffmpeg');
 //var AccountController = require('../../controllers/account-controller');
 //var accountController = new AccountController();
 
-var Vedio = require('../../models/vedio');
+var Video = require('../../models/video');
 
 function takeScreeshots(fileName, fileType, callback) {
 
-  var originalFileLocation = __dirname + '/../../public/vedio/' + fileName;
+  var originalFileLocation = __dirname + '/../../public/video/' + fileName;
   var photoName = fileName.replace(fileType, 'png');
   var photoLocation = __dirname + '/../../public/screeshots';
 
@@ -44,7 +44,7 @@ router.post('/', (req, res, next)=> {
   async.waterfall([
     (done)=> {
       //查找数据库是否存在某一用户上传过的某一同名视频
-      Vedio.findOne({userId: userId, originalname: fileName}, done);
+      Video.findOne({userId: userId, originalname: fileName}, done);
     }, (data, done)=> {
       if (data) {
         done(null, null);
@@ -56,11 +56,11 @@ router.post('/', (req, res, next)=> {
           } else {
 
             var creatTime = Date.parse(new Date()) / constant.time.MILLISECOND_PER_SECONDS;
-            var screenshotsPath = 'public/screeshots/' + fileName.replace(fileType, 'png');
+            var screenshotsPath = '/screeshots/' + fileName.replace(fileType, 'png');
 
             var vedioInfo = Object.assign({}, file.fileInfo, {createTime: creatTime}, {userId: userId}, {screenshotsPath: screenshotsPath});
 
-            var vedio = new Vedio(vedioInfo);
+            var vedio = new Video(vedioInfo);
             vedio.save((err, doc, affectNum)=> {
               done(err, doc);
             })
@@ -81,7 +81,7 @@ router.post('/form', (req, res, next)=> {
   var form = req.body;
 
   //因为视频已经上传,但是可能详细的信息并没有填写 所以在此处要先查询该用户没填写详细信息的视频
-  Vedio.findOne({userId: userId, isDetailsInfoComplete: false}, (err, doc)=> {
+  Video.findOne({userId: userId, isDetailsInfoComplete: false}, (err, doc)=> {
     if (err) return next(err);
     if (doc) {
       doc = Object.assign(doc, form, {isDetailsInfoComplete: true});
