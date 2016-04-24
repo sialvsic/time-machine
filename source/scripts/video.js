@@ -3,12 +3,10 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Navigation = require('./components/navigation/navigation.component');
 var Account = require('./components/account/account.component');
+var Videoplay = require('./components/video-play/video-play.component.js');
 
 
-var Vedio = React.createClass({
-  componentWillMount: ()=> {
-  },
-
+var Video = React.createClass({
 
   render: ()=> {
     return (
@@ -16,7 +14,7 @@ var Vedio = React.createClass({
           <Navigation>
             <Account/>
           </Navigation>
-
+          <Videoplay/>
         </div>
     )
   }
@@ -24,7 +22,7 @@ var Vedio = React.createClass({
 
 
 ReactDOM.render(
-    <Vedio/>
+    <Video/>
     ,
-    document.getElementById('vedio-div')
+    document.getElementById('video-div')
 );
