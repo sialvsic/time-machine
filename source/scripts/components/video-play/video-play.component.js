@@ -2,47 +2,53 @@
 var React = require('react');
 var Reflux = require('reflux');
 
-var VedioItem = require('./vedio-item.component');
-var VedioActions = require('../../actions/movie/movie-actions');
-var VedioStore = require('../../store/movie/movie-store');
+var VideoPlayActions = require('../../actions/videoplay/videoplay-actions');
+var VideoPlayStore = require('../../store/videoplay/videoplay-store');
+
+function isEmptyObject(Object) {
+  for (var key in Object) {
+    return false;
+  }
+  return true;
+}
 
 
-var Vedio = React.createClass({
+var VideoPlay = React.createClass({
 
-  mixins: [Reflux.connect(VedioStore)],
+  mixins: [Reflux.connect(VideoPlayStore)],
 
   getInitialState: function () {
     return {
-      vedioPath: ''
+      videoPlayInfo: {}
     }
   },
 
   componentWillMount: function () {
-    var href = window.location.href;
-    var vedioPath = href.split('#');
-    console.log(vedioPath);
-    VedioActions.getMovies();
+    var videoPath = window.location.href.split('#');
+    VideoPlayActions.getVideo(videoPath[1]);
   },
 
 
   render: function () {
 
+    var source = isEmptyObject(this.state.videoPlayInfo) ? '' : (
+        <source src={this.state.videoPlayInfo.path.replace('public/','')}
+                type={this.state.videoPlayInfo.mimetype}/>
+    );
+
+
     return (
-        <div>
-          <video id="my-video" className="video-js vjs-big-play-centered" controls preload="auto" width="200"
-                 height="100"
-                 poster="./screeshots/Part.6(K.will)%20-(Talk%20Love)%20MV%201080P.png" data-setup="{}">
-            <source src="./vedio/Part.4%20(Gummy)%20-%20You%20Are%20My%20Everything%20MV%201080P.mp4" type='video/mp4'>
-              <!--<source src="MY_VIDEO.webm" type='video/webm'>-->
-              <p className="vjs-no-js">
-                To view this video please enable JavaScript, and consider upgrading to a web browser that
-                <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-              </p>
-            </source>
-          </video>
+        <div id="videoplay-div">
+          <div>
+            <video id="my-video" className="video-js vjs-big-play-centered" controls
+                   data-setup='{ "playbackRates": [1, 1.5, 2] ,"autoplay": true, "preload": "auto"}'>
+              {source}
+            </video>
+
+          </div>
         </div>
     )
   }
 });
 
-module.exports = Vedio;
+module.exports = VideoPlay;
