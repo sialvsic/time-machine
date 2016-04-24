@@ -6,14 +6,13 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var yamlConfig = require('node-yaml-config');
-var mongoConn = require('./services/mongo-conn');
 var MongoStore = require('connect-mongo')(session);
-var app = express();
 
-
+var mongoConn = require('./services/mongo-conn');
 var config = yamlConfig.load(__dirname + '/config/config.yml');
 var route = require('./routes/route');
 
+var app = express();
 
 var env = ['production', 'test', 'staging'].indexOf(process.env.NODE_ENV) < 0 ? 'development' : process.env.NODE_ENV;
 
@@ -31,7 +30,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 
 app.use(multer({
-  dest: './public/vedio',
+  dest: './public/video',
 
   onFileUploadStart: function (file) {
     //console.log("upload start");
