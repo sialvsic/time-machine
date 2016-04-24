@@ -2,9 +2,9 @@
 
 var express = require('express');
 var router = express.Router();
-var VedioController = require('../../controllers/vedio-controller');
-var vedioController = new VedioController();
+var VideoController = require('../../controllers/video-controller');
+var videoController = new VideoController();
 
-router.get('/vedio-play/:vedioId', vedioController.getVedio);
+router.get('/:videoId', videoController.getVideo);
 
 module.exports = router;
