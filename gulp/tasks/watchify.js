@@ -19,9 +19,7 @@ gulp.task('watchify', function (done) {
 
       var browserifyOpts = {
         entries: [entry],
-        debug: true,
-        insertGlobals: true,
-        detectGlobals: false
+        debug: true
       };
 
       //var w = watchify(browserify(browserifyOpts)
@@ -37,11 +35,9 @@ gulp.task('watchify', function (done) {
       //browserify(["babel/polyfill", [entry]], { debug: true })
 
       var w = watchify(browserify(browserifyOpts)
-          .transform(babelify.configure({
-            presets: ['es2015', 'react'],
-            plugins: ['transform-async-to-generator']
-          }))
-      );
+          .transform('babelify', {
+            presets: ['es2015', 'react']
+          }));
       //var w = watchify(browserify(browserifyOpts)
       //    .transform('babelify', {
       //      presets: ['es2015', 'react'],
