@@ -8,16 +8,13 @@ function VideoController() {
 }
 
 VideoController.prototype.getVideo = (req, res, next) => {
-  console.log(req.params.videoId);
-  console.log('11111111');
+  var videoId = req.params.videoId;
 
-  //console.log(' find movie');
-  ////查找电影
-  //Video.find({category: '电影'}, ('screenshotsPath title description label'), (err, doc)=> {
-  //  if (err) return next(err);
-  //  console.log(doc);
-  //  res.send(doc);
-  //})
+  //根据videoId 去查找 视频资源
+  Video.findById(videoId, ('mimetype path'), (err, doc)=> {
+    if (err) return next(err);
+    res.send(doc);
+  });
 };
 
 module.exports = VideoController;
