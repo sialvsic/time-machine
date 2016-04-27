@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var yamlConfig = require('node-yaml-config');
 var MongoStore = require('connect-mongo')(session);
+var sessionCheck = require('./middleware/session-check');
 
 var mongoConn = require('./services/mongo-conn');
 var config = yamlConfig.load(__dirname + '/config/config.yml');
@@ -27,6 +28,8 @@ app.use(session({
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(sessionCheck);
 
 
 app.use(multer({
