@@ -2,45 +2,45 @@
 var React = require('react');
 var Reflux = require('reflux');
 
-var VedioItem = require('../vedio-item/vedio-item');
-var MovieActions = require('../../actions/movie/movie-actions');
-var MovieStore = require('../../store/movie/movie-store');
+var VideoItem = require('../video-item/video-item.component');
+var TVplayActions = require('../../actions/tvplay/tvplay-actions');
+var TVplayStore = require('../../store/tvplay/tvplay-store');
 
 
 var TVplay = React.createClass({
 
-  mixins: [Reflux.connect(MovieStore)],
+  mixins: [Reflux.connect(TVplayStore)],
 
   getInitialState: function () {
-    //movieList : [{
+    //tvplayList : [{
     //   screenshotsPath: String,  //视频截图的文件
     //   title: String,          //视频标题
     //   description: String,    //视频描述
     // }]
     return {
-      movieList: []
+      tvplayList: []
     }
   },
 
-  componentDidMount: function () {
-    MovieActions.getMovies();
+  componentWillMount: function () {
+    TVplayActions.getTVplay();
   },
 
 
   render: function () {
-    var movieList = this.state.movieList.length === 0 ? '' : (<VedioItem vedioItems={this.state.movieList}/>);
+    var tvplayList = this.state.tvplayList.length === 0 ? '' : (<VideoItem vedioItems={this.state.tvplayList}/>);
 
     return (
-        <div id="movie-div" className="container-fluid">
-          <div className="movie-header">
-            <p>电影&nbsp;&nbsp;&nbsp;</p>
+        <div id="tvplay-div" className="container-fluid">
+          <div className="tvplay-header">
+            <p>电视剧&nbsp;&nbsp;&nbsp;</p>
             <a href="">更多&gt;&gt;</a>
           </div>
-          <div className="movie-line"></div>
-          {movieList}
+          <div className="tvplay-line"></div>
+          {tvplayList}
         </div>
     );
   }
 });
 
-module.exports = Movie;
+module.exports = TVplay;

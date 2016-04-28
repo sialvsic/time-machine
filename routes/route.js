@@ -7,6 +7,7 @@ exports.setRoutes = function (app) {
   app.use('/account', require('./routers/account'));
   app.use('/upload', require('./routers/upload'));
   app.use('/movies', require('./routers/movie'));
+  app.use('/tvplays', require('./routers/tvplays'));
   app.use('/video', require('./routers/video'));
 
 };

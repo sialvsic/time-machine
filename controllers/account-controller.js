@@ -1,8 +1,8 @@
 'use strict';
+var mongoose = require('mongoose');
 var constant = require('../mixin/constant');
 var User = require('../models/user');
 var httpStatus = require('../mixin/constant').httpCode;
-var mongoose = require('mongoose');
 
 
 function AccountController() {
