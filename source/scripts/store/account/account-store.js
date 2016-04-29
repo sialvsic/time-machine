@@ -25,6 +25,15 @@ var AccountStore = Reflux.createStore({
             //page('register.html');
           }
         });
+  },
+
+  onLogout: function () {
+    request.get('/logout')
+        .set('Content-Type', 'application/json')
+        .use(errorHandler)
+        .end((err, res) => {
+          page('index.html');
+        });
   }
 });
 
