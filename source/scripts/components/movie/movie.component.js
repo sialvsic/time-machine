@@ -28,7 +28,6 @@ var Movie = React.createClass({
 
 
   render: function () {
-    console.log(this.state.movieList);
 
     var movieList = this.state.movieList.length === 0 ? '' : (<VideoItem vedioItems={this.state.movieList}/>);
 
