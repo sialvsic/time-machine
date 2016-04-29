@@ -18,11 +18,6 @@ var VideoFunc = React.createClass({
     }
   },
 
-  //componentDidUpdate: function () {
-  //  this.setState({videoId: this.props.videoPlayInfo._id});
-  //},
-
-
   thumb: function () {
     var thumbsupStatus = !this.state.thumbsupStatus;
     var videoId = this.props.videoPlayInfo._id;
@@ -51,6 +46,7 @@ var VideoFunc = React.createClass({
 
   star: function () {
     var starStatus = !this.state.starStatus;
+    var videoId = this.props.videoPlayInfo._id;
 
     if (starStatus) {
       //如果为true  表示已收藏
@@ -59,17 +55,15 @@ var VideoFunc = React.createClass({
         starStatus: starStatus
       });
 
-      //向后台发送请求,
-
-
     } else {
       //表示未收藏
       this.setState({
         starStatus: starStatus
       });
-      //向后台发送请求,
-
     }
+    //向后台发送请求,设置最新的视频收藏状态
+    VideoFuncActions.setStarStatus(starStatus, videoId);
+
   },
 
 

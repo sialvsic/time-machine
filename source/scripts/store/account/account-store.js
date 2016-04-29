@@ -21,7 +21,8 @@ var AccountStore = Reflux.createStore({
           } else if (res.body.status === constant.httpCode.OK) {
             this.trigger({account: res.body.account, isLoged: true});
           } else {
-            page('register.html');
+            //TODO
+            //page('register.html');
           }
         });
   }

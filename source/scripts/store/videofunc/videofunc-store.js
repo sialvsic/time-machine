@@ -18,9 +18,23 @@ var VedioplayStore = Reflux.createStore({
       thumbsupStatus: thumbsupStatus
     };
 
-    console.log(url);
-    console.log(typeof videoId);
-    console.log(thumbsupStatus);
+    request.put(url)
+        .set('Content-Type', 'application/json')
+        .send(data)
+        .use(errorHandler)
+        .end((err, req)=> {
+
+          //this.trigger({videoPlayInfo: req.body})
+
+        });
+  },
+
+  onSetStarStatus: function (starStatus, videoId) {
+
+    var url = '/video/' + videoId + '/starStatus';
+    var data = {
+      starStatus: starStatus
+    };
 
     request.put(url)
         .set('Content-Type', 'application/json')
@@ -32,6 +46,7 @@ var VedioplayStore = Reflux.createStore({
 
         });
   }
+
 
 });
 
