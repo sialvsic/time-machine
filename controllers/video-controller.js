@@ -13,16 +13,57 @@ function VideoController() {
 }
 
 VideoController.prototype.getVideo = (req, res, next) => {
+  var userId = req.session.user.id;
   var videoId = req.params.videoId;
+  var videoInfo = {};
+  var starStatus = false;
+  var thumbsupStatus = false;
 
-  //根据videoId 去查找 视频资源
-  Video.findById(videoId, ('mimetype path'), (err, doc)=> {
-    if (err) return next(err);
-    console.log(doc);
-    res.send(doc);
+  async.waterfall([
+    (done)=> {
+      //根据videoId 去查找 视频资源
+      Video.findById(videoId, ('mimetype path thumbupNumber'), done)
+
+    }, (data, done)=> {
+      videoInfo.thumbupNumber = data.thumbupNumber;
+      videoInfo.path = data.path;
+      videoInfo.mimetype = data.mimetype;
+      videoInfo._id = data._id;
+
+      //然后查找用户,更新用户的点赞列表
+      User.findOne({_id: userId}, done);
+
+    }, (data, done)=> {
+      var star = data.star.find((item)=> {
+        return item.toString() === videoId;
+      });
+
+      if (star) {
+        starStatus = true;
+      }
+
+      var thumbsup = data.thumbsup.find((item)=> {
+        return item.toString() === videoId;
+      });
+
+      if (thumbsup) {
+        thumbsupStatus = true;
+      }
+
+      done(null, null);
+    }
+  ], (err, data)=> {
+    if (err)  return next(err);
+
+    var videoNewInfo = Object.assign({}, videoInfo, {
+      thumbsupStatus: thumbsupStatus
+    }, {
+      starStatus: starStatus
+    });
+
+    res.send(videoNewInfo);
   });
 };
-
 
 //设置点赞的相关视频和用户的状态
 VideoController.prototype.setThumbsUpStatus = (req, res, next) => {
