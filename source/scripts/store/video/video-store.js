@@ -7,7 +7,7 @@ var errorHandler = require('../../../../middleware/error-handler');
 var VideoActions = require('../../actions/video/video-actions');
 
 
-var VedioStore = Reflux.createStore({
+var VideoStore = Reflux.createStore({
   listenables: VideoActions,
 
   onGetVideo: function (videoId) {
@@ -17,10 +17,15 @@ var VedioStore = Reflux.createStore({
         .set('Content-Type', 'application/json')
         .use(errorHandler)
         .end((err, req)=> {
-          this.trigger({videoPlayInfo: req.body})
+          this.trigger({
+            videoPlayInfo: req.body,
+            thumbsupNumbers: req.body.thumbupNumber,
+            thumbsupStatus: req.body.thumbsupStatus,
+            starStatus: req.body.starStatus
+          })
         });
   }
 
 });
 
-module.exports = VedioStore;
+module.exports = VideoStore;

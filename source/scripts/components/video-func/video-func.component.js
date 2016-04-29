@@ -4,17 +4,17 @@ var Reflux = require('reflux');
 
 var VideoFuncActions = require('../../actions/videofunc/videofunc-actions');
 var VideoFuncStore = require('../../store/videofunc/videofunc-store');
+var VideoStore = require('../../store/video/video-store');
 
 var VideoFunc = React.createClass({
 
-  mixins: [Reflux.connect(VideoFuncStore)],
+  mixins: [Reflux.connect(VideoFuncStore), Reflux.connect(VideoStore)],
 
   getInitialState: function () {
     return {
       thumbsupStatus: false,
       thumbsupNumbers: 0,
-      starStatus: false,
-      videoId: ''
+      starStatus: false
     }
   },
 
