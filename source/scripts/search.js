@@ -15,14 +15,13 @@ var Search = React.createClass({
 
   getInitialState: function () {
     return {
-      searchResults: []
+      searchResults: [],
+      itemLenght: 0
     }
   },
 
   componentWillMount: function () {
-    var searchContent = window.location.href.split('?q=');
-    //去的地址栏的输入搜索内容进行检索,当然先需要进行一下解码
-    SearchActions.searchResult(decodeURI(searchContent[1]));
+    SearchActions.searchResult(window.location.href);
   },
 
 
@@ -33,7 +32,7 @@ var Search = React.createClass({
             <Account/>
           </Navigation>
           <SearchResult searchResults={this.state.searchResults}
-                        searchContent={decodeURI(window.location.href.split('?q=')[1])}
+                        itemLenght={this.state.itemLenght}
           />
         </div>
     )

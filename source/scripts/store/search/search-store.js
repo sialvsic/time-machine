@@ -10,19 +10,26 @@ var SearchActions = require('../../actions/search/search-actions');
 var SearchStore = Reflux.createStore({
   listenables: SearchActions,
 
-  onSearchResult: function (searchContent) {
+  onSearchResult: function (href) {
+
+    var field = href.split('&&')[0];
+    var q = decodeURI(field.split('?q=')[1]);
+    var page = href.split('page=')[1];
 
     var url = '/search';
     request.get(url)
         .set('Content-Type', 'application/json')
         .query({
-          content: searchContent
+          content: q,
+          page: page || 1
+
         })
         .use(errorHandler)
         .end((err, req)=> {
 
           this.trigger({
-            searchResults: req.body
+            searchResults: req.body.doc,
+            itemLenght: req.body.allDatalength
           })
         });
   }
