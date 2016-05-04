@@ -2,8 +2,8 @@
 
 var Reflux = require('reflux');
 
-var VideoActions = Reflux.createActions([
-  'getVideo'
+var SearchActions = Reflux.createActions([
+  'searchResult'
 ]);
 
-module.exports = VideoActions;
+module.exports = SearchActions;

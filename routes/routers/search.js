@@ -2,10 +2,18 @@
 
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 
-var LogoutController = require('../../controllers/logout-controller');
-var logoutController = new LogoutController();
+var SearchController = require('../../controllers/search-controller');
+var searchController = new SearchController();
 
-router.get('/', logoutController.logout);
+
+router.post('/', (req, res, next)=> {
+
+  res.sendFile(path.join(__dirname, '../../public/', 'search.html'));
+});
+
+router.get('/', searchController.getSearchResult);
+
 
 module.exports = router;
