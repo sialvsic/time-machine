@@ -11,8 +11,8 @@ var userSchema = new Schema({
   mobilePhone: String,          //手机号
   password: String,             //密码
   createTime: Number,           //该用户创建的时间
-  thumbsup: [{type: Schema.Types.ObjectId}],         //点赞的视频
-  star: [{type: Schema.Types.ObjectId}]              //收藏的视频
+  thumbsup: [{type: Schema.Types.ObjectId, default: []}],         //点赞的视频
+  star: [{type: Schema.Types.ObjectId, default: []}]              //收藏的视频
 });
 
 module.exports = mongoose.model('users', userSchema);
