@@ -18,13 +18,6 @@ var constant = {
     HOURS_PER_DAY: 24,
     MILLISECOND_PER_SECONDS: 1000
   },
-  homeworkQuizzesStatus: {
-    LOCKED: 1,
-    ACTIVE: 2,
-    PROGRESS: 3,
-    SUCCESS: 4,
-    ERROR: 5
-  },
   backConstant: {
     MOBILE_PHONE_LENGTH: 11,
     PASSWORD_MIN_LENGTH: 8,
@@ -32,6 +25,9 @@ var constant = {
     SUCCESSFUL_STATUS: 200,
     FAILING_STATUS: 404,
     SERVER_ERROR: 500
+  },
+  itemPerPage: {
+    search: 3 //搜索页面的每页显示的数量
   }
 };
 

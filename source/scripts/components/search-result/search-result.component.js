@@ -1,6 +1,8 @@
 'use strict';
 var React = require('react');
 var moment = require('moment');
+var constant = require('../../../../mixin/constant');
+
 
 function getParameter(name) {
   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -16,7 +18,7 @@ var SearchResult = React.createClass({
     var itemLength = this.props.itemLenght;
     //init
     jQuery(function () {
-      var itemPerPage = 2;
+      var itemPerPage = constant.itemPerPage.search;
       var totalPage = Math.ceil(itemLength / itemPerPage);
       console.log(totalPage);
       var totalRecords = itemLength;

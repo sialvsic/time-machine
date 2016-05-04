@@ -10,9 +10,6 @@ function SearchController() {
 
 SearchController.prototype.getSearchResult = (req, res, next) => {
 
-  console.log('req.query');
-  console.log(req.query);
-
   //比较搓的方式 进行处理  待优化  原因:
   if (req.query.q) {
     res.sendFile(path.join(__dirname, '../public/', 'search.html'));
@@ -31,7 +28,7 @@ SearchController.prototype.getSearchResult = (req, res, next) => {
       Video.find({title: reg}, done);
     }, (data, done)=> {
       length = data.length;
-      var itemPerPage = 2;
+      var itemPerPage = constant.itemPerPage.search;
       var skip = itemPerPage * (page - 1);
 
       var query = Video.find({title: reg}, ('createTime title label description category screenshotsPath path'));
