@@ -34,7 +34,7 @@ var TVplay = React.createClass({
         <div id="tvplay-div" className="container-fluid">
           <div className="tvplay-header">
             <p>电视剧&nbsp;&nbsp;&nbsp;</p>
-            <a href="">更多&gt;&gt;</a>
+            <a href="tvplaysmore.html">更多&gt;&gt;</a>
           </div>
           <div className="tvplay-line"></div>
           {tvplayList}

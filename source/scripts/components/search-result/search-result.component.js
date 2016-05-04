@@ -16,11 +16,11 @@ var SearchResult = React.createClass({
 
   componentDidUpdate: function () {
     var itemLength = this.props.itemLenght;
+
     //init
     jQuery(function () {
       var itemPerPage = constant.itemPerPage.search;
       var totalPage = Math.ceil(itemLength / itemPerPage);
-      console.log(totalPage);
       var totalRecords = itemLength;
       var pageNo = getParameter('page');
       if (!pageNo) {

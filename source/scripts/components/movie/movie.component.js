@@ -35,7 +35,7 @@ var Movie = React.createClass({
         <div id="movie-div" className="container-fluid">
           <div className="movie-header">
             <p>电影&nbsp;&nbsp;&nbsp;</p>
-            <a href="">更多&gt;&gt;</a>
+            <a href="moviesmore.html">更多&gt;&gt;</a>
           </div>
           <div className="movie-line"></div>
           {movieList}

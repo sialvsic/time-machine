@@ -3,7 +3,7 @@
 var Reflux = require('reflux');
 
 var MoviesMoreActions = Reflux.createActions([
-  'getMoviesMore'
+  'getCategoryMore'
 ]);
 
 module.exports = MoviesMoreActions;

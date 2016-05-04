@@ -18,14 +18,17 @@ var SearchResult = React.createClass({
     var itemLength = this.props.itemLenght;
     //init
     jQuery(function () {
-      var itemPerPage = constant.itemPerPage.search;
+      var itemPerPage = constant.itemPerPage.movie;
       var totalPage = Math.ceil(itemLength / itemPerPage);
-      console.log(totalPage);
       var totalRecords = itemLength;
       var pageNo = getParameter('page');
       if (!pageNo) {
         pageNo = 1;
       }
+
+      var field = window.location.href.split('localhost:5299/')[1];
+      var html = field.split('?page=')[0];
+
       //生成分页
       //分页使用的是https://github.com/pgkk/kkpager
       //有些参数是可选的，比如lang，若不传有默认值
@@ -36,14 +39,14 @@ var SearchResult = React.createClass({
         //总数据条数
         totalRecords: totalRecords,
         //链接前部
-        hrefFormer: 'search',
+        hrefFormer: html,
 
         getLink: function (n) {
 
           var href = decodeURI(window.location.href.split('&&')[0]);
           var url = href.split('?q=')[1];
 
-          return this.hrefFormer + "?q=" + url + "&&page=" + n;
+          return this.hrefFormer + "?page=" + n;
         }
         /*
          ,lang				: {
@@ -73,8 +76,7 @@ var SearchResult = React.createClass({
   },
 
   render: function () {
-
-    var searchResults = this.props.searchResults;
+    var searchResults = this.props.categoryMoreResults;
     var result;
     var resultNumber = 0;
     if (searchResults.length !== 0) {
@@ -113,18 +115,14 @@ var SearchResult = React.createClass({
 
     }
 
-
-    var href = decodeURI(window.location.href.split('&&')[0]);
-    var searchContent = href.split('?q=')[1];
-
     return (
-        <div id="search-result-div">
-          <div className="search-result-tip col-md-12">
+        <div id="categorymore-result-div">
+          <div className="categorymore-result-tip col-md-12">
             <div className="col-md-offset-1">
-              <p>搜索{searchContent},共检索到{this.props.itemLenght}个视频</p>
+              <p>搜索{this.props.category},共检索到{this.props.itemLenght}个视频</p>
             </div>
           </div>
-          <div className="search-result-item col-md-8">
+          <div className="categorymore-result-item col-md-8">
             {result}
           </div>
           <div id="kkpager" className="col-md-7 col-md-offset-1"></div>

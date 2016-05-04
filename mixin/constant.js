@@ -27,7 +27,8 @@ var constant = {
     SERVER_ERROR: 500
   },
   itemPerPage: {
-    search: 3 //搜索页面的每页显示的数量
+    search: 3, //搜索页面的每页显示的数量
+    movie: 6
   }
 };
 

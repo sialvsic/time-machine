@@ -4,10 +4,10 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 
-var MoviesmoreController = require('../../controllers/moviesmore-controller');
-var moviesmoreController = new MoviesmoreController();
+var CategoryMoreController = require('../../controllers/categorymore-controller');
+var categoryMoreController = new CategoryMoreController();
 
-router.get('/', moviesmoreController.getMoviesMore);
+router.get('/', categoryMoreController.getCategoryMore);
 
 
 module.exports = router;

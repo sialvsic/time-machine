@@ -1,50 +1,13 @@
 'use strict';
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Reflux = require('reflux');
-var Navigation = require('./components/navigation/navigation.component');
-var Account = require('./components/account/account.component');
 
-var MovieMoreResult = require('./components/moviesmore-result/moviesmore-result.component.js');
-var MovieMoreActions = require('./actions/moviesmore/moviesmore-actions');
-var MovieMoreStore = require('./store/moviesmore/moviesmore-store');
-
-var MovieMore = React.createClass({
-
-  mixins: [Reflux.connect(MovieMoreStore)],
-
-  getInitialState: function () {
-    return {
-      MovieMoreResults: [],
-      itemLenght: 0
-    }
-  },
-
-  componentWillMount: function () {
-    //MovieMoreActions.getMoviesMore(window.location.href);
-  },
-
-
-  render: function () {
-    return (
-        <div>
-          <Navigation>
-            <Account/>
-          </Navigation>
-
-        </div>
-    )
-  }
-});
+var CategoryMore = require('./components/categorymore/categorymore.component.js');
 
 
 ReactDOM.render(
-    <MovieMore/>
+    <CategoryMore/>
     ,
-    document.getElementById('movie-div')
+    document.getElementById('moviesmore-div')
 );
 
-//
-//<MovieMoreResult searchResults={this.state.searchResults}
-//                 itemLenght={this.state.itemLenght}
-///>

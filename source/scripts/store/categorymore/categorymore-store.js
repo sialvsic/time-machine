@@ -1,60 +1,51 @@
 'use strict';
 
 var Reflux = require('reflux');
-var MoviesmoreActions = require('../../actions/moviesmore/moviesmore-actions');
+var CategoryMoreActions = require('../../actions/categorymore/categorymore-actions');
 var request = require('superagent');
 var constant = require('../../../../mixin/constant');
-var page = require('page');
 var errorHandler = require('../../../../middleware/error-handler');
 
 
-var MoviesMoreStore = Reflux.createStore({
-  listenables: MoviesmoreActions,
+var CategoryMoreStore = Reflux.createStore({
+  listenables: CategoryMoreActions,
 
-  onGetMoviesMore: function (href) {
-    var field = href.split('?page=');
-    console.log(field)
-    var page = field[1];
-    console.log(page);
+  onGetCategoryMore: function (href) {
+
+    var field = href.split('localhost:5299/')[1];
+    var page = href.split('?page=')[1];
+    var html = field.split('?page=')[0];
+
+    var categoryHash = [{
+      html: 'moviesmore.html',
+      category: '电影'
+
+    }, {
+      html: 'tvplaysmore.html',
+      category: '电视剧'
+    }];
+
+    var item = categoryHash.find((item)=> {
+      return item.html === html;
+    });
 
     request.get('/categorymore')
         .set('Content-Type', 'application/json')
         .query({
+          categorymore: item.category,
           page: page || 1
         })
         .use(errorHandler)
         .end((err, req) => {
+
           this.trigger({
-            movieList: req.body
-          });
+            categoryMoreResults: req.body.doc,
+            itemLenght: req.body.allDatalength,
+            category: req.body.category
+          })
         });
   }
 
-
-  //onSearchResult: function (href) {
-  //
-  //  var field = href.split('&&')[0];
-  //  var q = decodeURI(field.split('?q=')[1]);
-  //  var page = href.split('page=')[1];
-  //
-  //  var url = '/search';
-  //  request.get(url)
-  //      .set('Content-Type', 'application/json')
-  //      .query({
-  //        content: q,
-  //        page: page || 1
-  //
-  //      })
-  //      .use(errorHandler)
-  //      .end((err, req)=> {
-  //
-  //        this.trigger({
-  //          searchResults: req.body.doc,
-  //          itemLenght: req.body.allDatalength
-  //        })
-  //      });
-  //}
-
 });
 
-module.exports = MoviesMoreStore;
+module.exports = CategoryMoreStore;

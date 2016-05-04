@@ -8,6 +8,6 @@ var CategoryMore = require('./components/categorymore/categorymore.component.js'
 ReactDOM.render(
     <CategoryMore/>
     ,
-    document.getElementById('moviesmore-div')
+    document.getElementById('tvplaysmore-div')
 );
 
