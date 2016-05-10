@@ -10,9 +10,14 @@ function MovieController() {
 
 MovieController.prototype.getMovies = (req, res, next) => {
 
+  console.log('heh');
+
   //查找电影
   Vedio.find({category: '电影'}, ('screenshotsPath title description label'), (err, doc)=> {
+    console.log(err)
+    console.log(doc)
     if (err) return next(err);
+
     res.send(doc);
   })
 };

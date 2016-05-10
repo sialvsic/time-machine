@@ -23,6 +23,7 @@ var Movie = React.createClass({
   },
 
   componentWillMount: function () {
+      console.log('1234');
     MovieActions.getMovies();
   },
 
