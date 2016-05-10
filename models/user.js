@@ -7,9 +7,14 @@ var yamlConfig = require('node-yaml-config');
 var config = yamlConfig.load('./config/config.yml');
 
 var userSchema = new Schema({
-  email: String,                //邮箱
-  mobilePhone: String,          //手机号
-  password: String,             //密码
+  email: {type: String, default: ''},                //邮箱
+  mobilePhone: {type: String, default: ''},          //手机号
+  password: {type: String, default: ''},             //密码
+  major: {type: String, default: ''},                //专业
+  gender: {type: String, default: 'M'},               //性别
+  school: {type: String, default: ''},               //学校
+  degree: {type: String, default: ''},               //学历
+  name: {type: String, default: ''},                 //姓名
   createTime: Number,           //该用户创建的时间
   thumbsup: [{type: Schema.Types.ObjectId, default: []}],         //点赞的视频
   star: [{type: Schema.Types.ObjectId, default: []}]              //收藏的视频

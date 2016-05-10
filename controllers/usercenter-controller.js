@@ -4,35 +4,41 @@ var constant = require('../mixin/constant');
 var User = require('../models/user');
 var httpStatus = require('../mixin/constant').httpCode;
 
-function AccountController() {
+function UserCenterController() {
 }
 
-AccountController.prototype.loadAccount = (req, res, next) => {
+UserCenterController.prototype.getUserDetail = (req, res, next) => {
 
-  if (req.session.user) {
-    var userId = req.session.user.id;
+  var userId = req.session.user.id;
+  var result;
 
-    //如果session存在,去查询这个session的user.id的用户名  以邮箱的形式返回
-    User.findOne({_id: mongoose.Types.ObjectId(userId)}, (err, doc)=> {
-      if (err) {
-        next(err);
-        return;
-      } else {
-        if (doc !== null) {
-          res.send({
-            status: constant.httpCode.OK,
-            account: doc.email
-          });
-        } else {
-          res.send({
-            status: httpStatus.NOT_FOUND  //404 代表不存在该用户
-          })
-        }
-      }
-    });
-  } else {
-    res.send({status: constant.httpCode.ACCEPTED});
-  }
+  //如果session存在,去查询这个session的user.id的用户名  以邮箱的形式返回
+  User.findOne({_id: mongoose.Types.ObjectId(userId)}, ('mobilePhone email major gender school degree name'), (err, doc)=> {
+    if (err) {
+      return next(err)
+    }
+    console.log(doc);
+    res.send(doc);
+  });
+
 };
 
-module.exports = AccountController;
+UserCenterController.prototype.updateUserDetail = (req, res, next) => {
+
+  var userId = req.session.user.id;
+  var userData = req.body.data;
+  console.log(userData);
+  var result;
+
+  //如果session存在,去查询这个session的user.id的用户名  以邮箱的形式返回
+  User.findOneAndUpdate({_id: mongoose.Types.ObjectId(userId)}, userData, (err, doc)=> {
+    if (err) {
+      return next(err)
+    }
+    console.log(doc);
+    res.end();
+  });
+
+};
+
+module.exports = UserCenterController;

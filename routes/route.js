@@ -12,5 +12,6 @@ exports.setRoutes = function (app) {
   app.use('/video', require('./routers/video'));
   app.use('/search', require('./routers/search'));
   app.use('/categorymore', require('./routers/categorymore'));
+  app.use('/user-detail', require('./routers/user-detail'));
 
 };
