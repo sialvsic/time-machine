@@ -16,8 +16,8 @@ var userSchema = new Schema({
   degree: {type: String, default: ''},               //学历
   name: {type: String, default: ''},                 //姓名
   createTime: Number,           //该用户创建的时间
-  thumbsup: [{type: Schema.Types.ObjectId, default: []}],         //点赞的视频
-  star: [{type: Schema.Types.ObjectId, default: []}]              //收藏的视频
+  thumbsup: [{type: Schema.Types.ObjectId, ref: 'vedios'}],         //点赞的视频
+  star: [{type: Schema.Types.ObjectId, ref: 'vedios'}]              //收藏的视频
 });
 
 module.exports = mongoose.model('users', userSchema);

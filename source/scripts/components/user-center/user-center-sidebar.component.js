@@ -18,12 +18,14 @@ var UserCenterSide = React.createClass({
   },
 
   handleClick: function (mark, currentState) {
+    console.log(mark);
+    console.log(currentState);
     UserCenterActions.changeState(mark, currentState);
     if (mark === 'userDetail') {
       UserCenterActions.loadUserDetail();
     }
-    if (mark === 'result') {
-      UserCenterActions.loadResult();
+    if (mark === 'star') {
+      UserCenterActions.loadStar();
     }
   },
 
@@ -32,7 +34,7 @@ var UserCenterSide = React.createClass({
       {mark: 'userDetail', value: '个人信息'},
       {mark: 'password', value: '修改密码'},
       //{mark: 'result', value: '查看结果'}
-      {mark: 'result', value: '我的收藏'}
+      {mark: 'star', value: '我的收藏'}
     ];
 
     var itemHtml = tags.map((item, index) => {

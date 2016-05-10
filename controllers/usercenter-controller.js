@@ -2,6 +2,7 @@
 var mongoose = require('mongoose');
 var constant = require('../mixin/constant');
 var User = require('../models/user');
+var Video = require('../models/video');
 var httpStatus = require('../mixin/constant').httpCode;
 var md5 = require('js-md5');
 var async = require('async');
@@ -92,6 +93,53 @@ UserCenterController.prototype.changePassword = (req, res, next) => {
         }
 
     });
+};
+
+UserCenterController.prototype.getStar = (req, res, next) => {
+
+    var userId = req.session.user.id;
+
+    // 此用法可以拿到数据但是不能skip 不能分页 自己手写一个分页
+    // User.find({
+    //         _id: mongoose.Types.ObjectId(userId)
+    //     }, ('star'))
+    //     .populate({
+    //         path: 'star',
+    //         options: {
+    //             skip: 1,
+    //             limit: 2,
+    //         }
+    //     })
+    //     .exec(function(err, story) {
+    //         console.log(err);
+    //
+    //         console.log(story[0]);
+    //         console.log(story);
+    //         res.end();
+    //     })
+    //skip 跳过x个
+    //limit 读取x个
+
+    User.find({
+            _id: mongoose.Types.ObjectId(userId)
+        }, ('star'))
+        .populate('star')
+        .exec(function(err, story) {
+            var starList = story[0].star;
+
+            console.log(starList);
+            var page = 2;
+            var itemPerPage = 3;
+
+            var limit = itemPerPage;
+            var skip = (page - 1) * itemPerPage;
+
+            var showStarList = starList.slice(skip, skip + limit);
+            console.log(showStarList);
+
+            res.end();
+        });
+
 };
 
 module.exports = UserCenterController;

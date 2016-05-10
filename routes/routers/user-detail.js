@@ -8,5 +8,6 @@ var usercenterController = new UserCenterController();
 router.get('/', usercenterController.getUserDetail);
 router.put('/', usercenterController.updateUserDetail);
 router.put('/change-password', usercenterController.changePassword);
+router.get('/star', usercenterController.getStar);
 
 module.exports = router;

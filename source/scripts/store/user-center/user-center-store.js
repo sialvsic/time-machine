@@ -20,22 +20,24 @@ var UserDetailStore = Reflux.createStore({
         });
   },
 
-  onLoadResult: function () {
-    request.get('/user/feedback-result')
+  onLoadStar: function () {
+    request.get('/user-detail/star')
         .set('Content-Type', 'application/json')
         .use(errorHandler)
         .end((err, res) => {
-          if (res.body.httpCode === constant.httpCode.NOT_FOUND) {
-            this.trigger({
-              logicPuzzle: '',
-              homework: []
-            });
-          } else {
-            this.trigger({
-              logicPuzzle: res.body.logicPuzzle,
-              homework: res.body.homework
-            });
-          }
+
+          // if (res.body.httpCode === constant.httpCode.NOT_FOUND) {
+          //   this.trigger({
+          //     logicPuzzle: '',
+          //     homework: []
+          //   });
+          // } else {
+          //   this.trigger({
+          //     logicPuzzle: res.body.logicPuzzle,
+          //     homework: res.body.homework
+          //   });
+          // }
+
         });
   },
 
@@ -57,7 +59,6 @@ var UserDetailStore = Reflux.createStore({
     if (state !== currentState) {
       this.trigger({
         currentState: state
-
       });
     }
   },
