@@ -16,7 +16,6 @@ var MovieStore = Reflux.createStore({
         .set('Content-Type', 'application/json')
         .use(errorHandler)
         .end((err, req) => {
-            console.log(req.body);
           this.trigger({
             movieList: req.body
           });

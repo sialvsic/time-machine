@@ -20,9 +20,7 @@ var ChangePasswordStore = Reflux.createStore({
         })
         .use(errorHandler)
         .end((err, res) => {
-          if (!res) {
-            return;
-          }
+
           if (res.body.status === constant.httpCode.OK) {
             this.trigger({
               success: true,
