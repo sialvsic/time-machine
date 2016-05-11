@@ -21,7 +21,8 @@ AccountController.prototype.loadAccount = (req, res, next) => {
         if (doc !== null) {
           res.send({
             status: constant.httpCode.OK,
-            account: doc.email
+            account: doc.email,
+            isAdmin: doc.role === 2 
           });
         } else {
           res.send({

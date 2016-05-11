@@ -18,7 +18,7 @@ var UserCenterSide = React.createClass({
   },
 
   handleClick: function (mark, currentState) {
-  
+
     UserCenterActions.changeState(mark, currentState);
 
     if (mark === 'userDetail') {
@@ -59,7 +59,7 @@ var UserCenterSide = React.createClass({
             <div className="list-group-item active">
               <div className="row">
                 <div className="col-xs-9 h4 text-center">个人中心</div>
-                <div className="col-xs-3"><i className={'user-center-nav-icon h4 fa-lg fa fa-user-plus'}/></div>
+                <div className="col-xs-3"><i className={'user-center-nav-icon h4 fa-lg fa fa-user'}/></div>
               </div>
             </div>
             {itemHtml}

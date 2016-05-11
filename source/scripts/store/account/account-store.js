@@ -19,7 +19,8 @@ var AccountStore = Reflux.createStore({
           if (err) {
             return;
           } else if (res.body.status === constant.httpCode.OK) {
-            this.trigger({account: res.body.account, isLoged: true});
+            console.log(res.body);
+            this.trigger({account: res.body.account, isLoged: true , isAdmin:res.body.isAdmin});
           } else {
             //TODO
             //page('register.html');

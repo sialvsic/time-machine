@@ -23,7 +23,8 @@ db.once('open', () => {
             email: '11111111@qq.com',
             mobilePhone: '13111111111',
             password: '25d55ad283aa400af464c76d713c07ad',
-            creatData: '1451117203'
+            creatData: '1451117203',
+            role: 2
           }, {
             email: '22222222@qq.com',
             mobilePhone: '13122222222',

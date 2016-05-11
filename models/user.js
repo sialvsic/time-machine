@@ -17,7 +17,8 @@ var userSchema = new Schema({
   name: {type: String, default: ''},                 //姓名
   createTime: Number,           //该用户创建的时间
   thumbsup: [{type: Schema.Types.ObjectId, ref: 'vedios'}],         //点赞的视频
-  star: [{type: Schema.Types.ObjectId, ref: 'vedios'}]              //收藏的视频
+  star: [{type: Schema.Types.ObjectId, ref: 'vedios'}],              //收藏的视频
+  role: {type: Number, default: 1}                  //用户权限等级 1为普通用户， 2为管理员用户
 });
 
 module.exports = mongoose.model('users', userSchema);
