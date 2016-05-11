@@ -61,7 +61,7 @@ var Account = React.createClass({
                   <a className="username">{this.state.account}</a>
                   <ul className="sub-menu">
                     <li>
-                      <a href="user-center.html">个人中心
+                      <a href="user-center.html?mark=userDetail">个人中心
                         <i className="fa fa-modx" aria-hidden="true"/>
                       </a></li>
                     <li className="last-li" onClick={this.logout}>

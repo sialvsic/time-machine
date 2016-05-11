@@ -29,7 +29,7 @@ var UserDetail = React.createClass({
       degreeError: '',
       mobilePhoneError: '',
       emailError: '',
-      currentState: 'userDetail'
+      currentState: ''
     };
   },
 

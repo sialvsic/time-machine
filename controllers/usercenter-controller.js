@@ -98,6 +98,10 @@ UserCenterController.prototype.changePassword = (req, res, next) => {
 UserCenterController.prototype.getStar = (req, res, next) => {
 
     var userId = req.session.user.id;
+    var pageNo = req.params.pageNo;
+
+
+    console.log(pageNo);
 
     // 此用法可以拿到数据但是不能skip 不能分页 自己手写一个分页
     // User.find({
@@ -125,20 +129,22 @@ UserCenterController.prototype.getStar = (req, res, next) => {
         }, ('star'))
         .populate('star')
         .exec(function(err, story) {
+            var itemLength = story[0].star.length || 0;
             var starList = story[0].star;
 
-            console.log(starList);
-            var page = 2;
-            var itemPerPage = 3;
+            var page = pageNo;
+            var itemPerPage = constant.itemPerPage.star;
 
             var limit = itemPerPage;
             var skip = (page - 1) * itemPerPage;
 
             var showStarList = starList.slice(skip, skip + limit);
-            console.log(showStarList);
 
-            res.end();
+            var respose = Object.assign({}, {starList: showStarList}, {itemLength: itemLength},{pageNo:pageNo});
+              console.log(respose);
+            res.send(respose);
         });
+
 
 };
 

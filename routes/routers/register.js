@@ -3,12 +3,13 @@
 var express = require('express');
 var router = express.Router();
 var lang = require('../../mixin/lang-message/chinese');
-var constant = require('../../mixin/constant').backConstant;
+
 var async = require('async');
 var validate = require('validate.js');
 var md5 = require('js-md5');
 var constraint = require('../../mixin/register-constraint');
 var httpStatus = require('../../mixin/constant').httpCode;
+var constant = require('../../mixin/constant').backConstant;
 
 var User = require('../../models/user');
 
@@ -83,7 +84,7 @@ router.post('/', (req, res, next) => {
         });
       }, (data, done)=> {
         //记录一条登录信息   存储到一条记录登录信息的表中
-        
+
         done(null, data);
       }, (data, done)=> {
         //设置session

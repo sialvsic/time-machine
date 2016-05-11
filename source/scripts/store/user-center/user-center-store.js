@@ -20,23 +20,17 @@ var UserDetailStore = Reflux.createStore({
         });
   },
 
-  onLoadStar: function () {
-    request.get('/user-detail/star')
+  onLoadStar: function (page) {
+
+    request.get('/user-detail/star/'+ page|| 1)
         .set('Content-Type', 'application/json')
         .use(errorHandler)
         .end((err, res) => {
-
-          // if (res.body.httpCode === constant.httpCode.NOT_FOUND) {
-          //   this.trigger({
-          //     logicPuzzle: '',
-          //     homework: []
-          //   });
-          // } else {
-          //   this.trigger({
-          //     logicPuzzle: res.body.logicPuzzle,
-          //     homework: res.body.homework
-          //   });
-          // }
+           this.trigger({
+             starList:res.body.starList,
+             starItemLength:res.body.itemLength,
+             pageNo:res.body.pageNo
+           });
 
         });
   },

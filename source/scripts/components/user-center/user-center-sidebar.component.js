@@ -18,18 +18,18 @@ var UserCenterSide = React.createClass({
   },
 
   handleClick: function (mark, currentState) {
-    console.log(mark);
-    console.log(currentState);
+  
     UserCenterActions.changeState(mark, currentState);
+
     if (mark === 'userDetail') {
       UserCenterActions.loadUserDetail();
     }
     if (mark === 'star') {
-      UserCenterActions.loadStar();
+      UserCenterActions.loadStar(1);
     }
   },
 
-  render() {
+  render:  function() {
     var tags = [
       {mark: 'userDetail', value: '个人信息'},
       {mark: 'password', value: '修改密码'},

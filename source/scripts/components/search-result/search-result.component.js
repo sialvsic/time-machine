@@ -15,7 +15,9 @@ function getParameter(name) {
 var SearchResult = React.createClass({
 
   componentDidUpdate: function () {
+
     var itemLength = this.props.itemLenght;
+
 
     //init
     jQuery(function () {

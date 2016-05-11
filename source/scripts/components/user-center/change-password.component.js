@@ -26,7 +26,7 @@ var ChangePassword = React.createClass({
       confirmPasswordError: '',
       success: false,
       isRespond: false,
-      currentState: 'password'
+      currentState: 'userDetail'
     };
   },
 
