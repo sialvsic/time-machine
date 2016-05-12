@@ -13,5 +13,6 @@ exports.setRoutes = function (app) {
   app.use('/search', require('./routers/search'));
   app.use('/categorymore', require('./routers/categorymore'));
   app.use('/user-detail', require('./routers/user-detail'));
+  app.use('/user-manage', require('./routers/user-manage'));
 
 };
