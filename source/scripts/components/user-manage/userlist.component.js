@@ -34,13 +34,11 @@ var UserList = React.createClass({
   componentDidUpdate: function () {
 
     var itemLength = this.props.itemLength;
-    console.log(itemLength);
     //init
     if(itemLength!==0){
           jQuery(function () {
             var itemPerPage = constant.itemPerPage.user;
             var totalPage = Math.ceil(itemLength / itemPerPage);
-            console.log(totalPage);
 
             var totalRecords = itemLength;
             var pageNo = getParameter('page');
@@ -57,14 +55,16 @@ var UserList = React.createClass({
               //总数据条数
               totalRecords: totalRecords,
               //链接前部
-              hrefFormer: 'search',
+              hrefFormer: 'user-manage.html',
 
               getLink: function (n) {
-
-                var href = decodeURI(window.location.href.split('&&')[0]);
-                var url = href.split('?q=')[1];
-
-                return this.hrefFormer + "?q=" + url + "&&page=" + n;
+                var href = window.location.href.split('user-manage.html')[1];
+                if(!href){
+                  //当不存在后面的值时
+                  return this.hrefFormer + "?type=all&&key=''&&page=" + n;
+                }
+                var frontPage = href.split('&&page=')[0];
+                return this.hrefFormer + frontPage  + "&&page=" + n;
               }
             });
           });
@@ -100,7 +100,7 @@ var UserList = React.createClass({
 
     UserManageAction.updateUserInfo(userData);
     jQuery('#submitModal').modal('hide');
-    page('user-manage.html');
+    page(window.location.href);
   },
 
   deleteInfo:function(evt){
@@ -187,7 +187,7 @@ var UserList = React.createClass({
 
 
                 <div className="modal-body">
-                <form className='form-horizontal form-top-height' onSubmit={this.update}>
+                <form className='form-horizontal form-top-height' onSubmit={this.updateInfo}>
                   <div id='account-info'>
                     <label htmlFor='inputSchool' className='col-sm-4 col-md-4 control-label'>学校<span
                         className="error alert alert-danger">*</span></label>

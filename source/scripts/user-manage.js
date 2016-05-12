@@ -26,10 +26,22 @@ var UserManage = React.createClass({
   },
 
   componentWillMount:function(){
-    console.log('getAllUserList');
+    var href = window.location.href.split('user-manage.html')[1];
+    if(!href){
+      UserManageAction.getAllUserList();
+    }else{
 
+      var url = window.location.href;
 
-    UserManageAction.getAllUserList();
+      var type = url.split('&&key')[0];
+      var typeValue = decodeURI(type.split('type=')[1]);
+      var key = url.split('&&page')[0];
+      var keyValue = decodeURI(key.split('key=')[1]);
+      var pageValue = url.split('&&page=')[1];
+      UserManageAction.getAllUserList(typeValue,keyValue,pageValue);
+
+    }
+
   },
 
   render: function () {

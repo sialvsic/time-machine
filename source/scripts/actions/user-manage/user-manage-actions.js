@@ -6,7 +6,8 @@ var UserManageActions = Reflux.createActions([
   'getAllUserList',
   'getUserInfo',
   'updateUserInfo',
-  'deleteUserInfo'
+  'deleteUserInfo',
+  'addUserInfo'
 ]);
 
 module.exports = UserManageActions;

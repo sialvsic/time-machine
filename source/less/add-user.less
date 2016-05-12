@@ -1,0 +1,88 @@
+#add-user-div{
+  #navigation {
+    nav {
+      .row {
+        div {
+          .search-form {
+            width: 93%;
+            @media (max-width: 768px) {
+              width: 100%;
+            }
+
+            .search-bar {
+              width: 60%;
+              @media (max-width: 768px) {
+                display: inline-block;
+              }
+              .search-text {
+                width: 100%;
+              }
+            }
+            .search-button {
+              height: 34px;
+              width: 112px;
+            }
+          }
+
+        }
+        .nav-account {
+          ul {
+            li {
+              @media (min-width: 1200px) {
+                margin: 0 15px;
+              }
+              @media (max-width: 1200px) {
+                margin: 0;
+              }
+
+              a {
+                @media (max-width: 992px) {
+                  padding: 15px 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  #add-user-form{
+    margin-top: 150px;
+    .form-top-height {
+      padding-left: 0px;
+      label {
+        padding-left: 0px;
+      }
+      .alert-danger{
+        background-color:white;
+        border-color:white;
+      }
+      .alert-success{
+        background-color:white;
+        border-color:white;
+      }
+      .gender {
+        margin-right: 5px;
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+      .error {
+        margin: 0px;
+        padding: 8px 0px 0px 3px;
+        border: none;
+        background: rgba(255, 255, 255, 0);
+      }
+      .select {
+        border: 1px solid red;
+      }
+      .school-info {
+        padding: 0px;
+      }
+    }
+    .add-user-form-end{
+      margin-top: 30px;
+    }
+  }
+}

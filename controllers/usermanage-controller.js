@@ -5,6 +5,7 @@ var User = require('../models/user');
 var constant = require('../mixin/constant');
 var async = require('async');
 var mongoose = require('mongoose');
+var md5 = require('js-md5');
 
 function UserManageController() {
 
@@ -84,7 +85,6 @@ UserManageController.prototype.getUserInfo = (req, res, next) => {
         _id: mongoose.Types.ObjectId(userId)
     }, ('name gender school major degree email mobilePhone'), (err, doc) => {
         if (err) return next(err);
-        console.log(doc);
         res.send(doc);
     });
 };
@@ -123,6 +123,18 @@ UserManageController.prototype.deleteUserInfo = (req, res, next) => {
         if (err) return next(err);
         res.end();
     });
+};
+
+UserManageController.prototype.addUserInfo = (req, res, next) => {
+    var userData = req.body;
+    userData.password = md5(userData.password);
+
+    var user = new User(userData);
+    user.save(function(err, doc) {
+        if (err) return next(err);
+        res.end();
+    });
+
 };
 
 
