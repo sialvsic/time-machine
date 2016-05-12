@@ -10,7 +10,7 @@
 
 2016.5.9 安装robomongo error
 
-➜  robomongo-shell git:(roboshell-v3.2) bin/build 
+➜  robomongo-shell git:(roboshell-v3.2) bin/build
 scons: Reading SConscript files ...
 Mkdir("build/scons")
 scons version: 2.5.0
@@ -26,3 +26,11 @@ Checking if C++ compiler is GCC 4.8.2 or newer...no
 ERROR: Refusing to build with compiler that does not meet requirements
 See /home/sialvsic/robomongo-shell/build/scons/config.log for details
 
+
+"star" : [
+        ObjectId("573167e26b0dd4ba24bfd071"),
+        ObjectId("57319b42207540c10ce33554"),
+        ObjectId("57319a62207540c10ce33550"),
+        ObjectId("57319ae3207540c10ce33552"),
+        ObjectId("57319a38207540c10ce3354f")
+    ],
