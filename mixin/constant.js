@@ -29,7 +29,8 @@ var constant = {
   itemPerPage: {
     search: 3, //搜索页面的每页显示的数量
     movie: 6,
-    star:2 //个人中心我的收藏显示到数量
+    star: 2,    //个人中心我的收藏显示到数量
+    user: 4   //管理员用户管理界面每页显示到数量
   }
 };
 
