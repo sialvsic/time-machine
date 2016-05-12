@@ -115,6 +115,8 @@ var UserList = React.createClass({
   render: function () {
 
     var userlistResults = this.props.userList;
+    var itemLength = this.props.itemLength;
+
     var result;
     if (userlistResults.length !== 0) {
       result = userlistResults.map((userItem, index)=> {
@@ -153,7 +155,7 @@ var UserList = React.createClass({
         <div id="user-list-div">
           <div className="search-result-tip col-md-12">
             <div className="col-md-offset-1">
-              <p>搜索xx,共检索到xx条信息</p>
+              <p>共检索到{itemLength}条信息</p>
             </div>
           </div>
           <div className="user-list-title col-md-12">

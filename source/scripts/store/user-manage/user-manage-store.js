@@ -13,13 +13,7 @@ var UserManageStore = Reflux.createStore({
         var usertype = type || 'all';
         var userkey = key || '';
         var userpage = page || 1;
-        console.log(type);
-        console.log(key);
-        console.log(page);
-        console.log(usertype);
-        console.log(userkey);
-        console.log(userpage);
-        
+
         var url = '/user-manage';
 
         request.get(url)
@@ -42,7 +36,6 @@ var UserManageStore = Reflux.createStore({
     onGetUserInfo: function(userId) {
 
         var url = '/user-manage/user';
-        console.log(url);
         request.get(url)
             .set('Content-Type', 'application/json')
             .query({
@@ -50,7 +43,6 @@ var UserManageStore = Reflux.createStore({
             })
             .use(errorHandler)
             .end((err, req) => {
-                console.log(req.body);
                 this.trigger(req.body)
             });
     },
@@ -88,7 +80,6 @@ var UserManageStore = Reflux.createStore({
     },
 
     onAddUserInfo: function(userdata) {
-       console.log(userdata);
         var url = '/user-manage/user';
         request.post(url)
             .set('Content-Type', 'application/json')
