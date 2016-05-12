@@ -40,6 +40,21 @@ db.once('open', () => {
             mobilePhone: '13144444444',
             password: '25d55ad283aa400af464c76d713c07ad',
             creatData: '1451117223'
+          },{
+            email: '55555555@qq.com',
+            mobilePhone: '13155555555',
+            password: '25d55ad283aa400af464c76d713c07ad',
+            creatData: '1451117223'
+          },{
+            email: '66666666@qq.com',
+            mobilePhone: '13166666666',
+            password: '25d55ad283aa400af464c76d713c07ad',
+            creatData: '1451117223'
+          },{
+            email: '77777777@qq.com',
+            mobilePhone: '13177777777',
+            password: '25d55ad283aa400af464c76d713c07ad',
+            creatData: '1451117223'
           }
         ], function () {
           console.log('mongo refresh end.');
