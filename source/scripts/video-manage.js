@@ -69,7 +69,7 @@ var VideoManage = React.createClass({
                <label htmlFor="select-type">请选择要查询的类型： </label>
                 <select className="form-control" id="select-type" ref='type'>
                     <option>名称</option>
-                    <option>类型</option>
+                    <option>扩展类型</option>
                     <option>分类</option>
                     <option>标签</option>
                 </select>
@@ -83,7 +83,7 @@ var VideoManage = React.createClass({
             </div>
           </div>
           <div className="check-video-list">
-             <a href="check-video.html"></a>
+             <a className="btn" href="check-video.html">审核上传视频</a>
           </div>
           <div>
              <h4>视频列表：</h4>

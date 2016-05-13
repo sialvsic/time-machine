@@ -10,5 +10,7 @@ router.get('/video', videoManageController.getVideoInfo);
 router.put('/video', videoManageController.updateVideoInfo);
 router.post('/video', videoManageController.addVideoInfo);
 router.delete('/video', videoManageController.deleteVideoInfo);
+router.get('/check', videoManageController.getAllCheckVideoList);
+router.put('/check', videoManageController.checkVideoPass);
 
 module.exports = router;

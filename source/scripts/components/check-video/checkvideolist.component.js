@@ -3,8 +3,8 @@ var React = require('react');
 var moment = require('moment');
 var Reflux = require('reflux');
 var constant = require('../../../../mixin/constant');
-var VideoManageAction = require('../../actions/video-manage/video-manage-actions');
-var VideoManageStore = require('../../store/video-manage/video-manage-store');
+var CheckVideoAction = require('../../actions/check-video/check-video-actions');
+var CheckVideoStore = require('../../store/check-video/check-video-store');
 var page = require('page');
 var moment = require('moment');
 
@@ -17,7 +17,7 @@ function getParameter(name) {
 
 
 var VideoList = React.createClass({
-  mixins: [Reflux.connect(VideoManageStore)],
+  mixins: [Reflux.connect(CheckVideoStore)],
 
   getInitialState:function(){
     return {
@@ -46,9 +46,7 @@ var VideoList = React.createClass({
             if (!pageNo) {
               pageNo = 1;
             }
-            //生成分页
-            //分页使用的是https://github.com/pgkk/kkpager
-            //有些参数是可选的，比如lang，若不传有默认值
+
             kkpager.generPageHtml({
               pno: pageNo,
               //总页码
@@ -56,16 +54,11 @@ var VideoList = React.createClass({
               //总数据条数
               totalRecords: totalRecords,
               //链接前部
-              hrefFormer: 'video-manage.html',
+              hrefFormer: 'check-video.html',
 
               getLink: function (n) {
-                var href = window.location.href.split('video-manage.html')[1];
-                if(!href){
-                  //当不存在后面的值时
-                  return this.hrefFormer + "?type=all&&key=''&&page=" + n;
-                }
-                var frontPage = href.split('&&page=')[0];
-                return this.hrefFormer + frontPage  + "&&page=" + n;
+
+                return this.hrefFormer + "?page=" + n;
               }
             });
           });
@@ -75,7 +68,7 @@ var VideoList = React.createClass({
 
   showModel: function(evt){
     var id = evt.target.name;
-    VideoManageAction.getVideoInfo(id);
+    CheckVideoAction.getVideoInfo(id);
     jQuery('#submitModal').modal('show');
   },
 
@@ -98,7 +91,7 @@ var VideoList = React.createClass({
       _id: this.state._id
     };
 
-    VideoManageAction.updateVideoInfo(videoData);
+    CheckVideoAction.updateVideoInfo(videoData);
     jQuery('#submitModal').modal('hide');
     page(window.location.href);
   },
@@ -106,10 +99,20 @@ var VideoList = React.createClass({
   deleteInfo:function(evt){
     evt.preventDefault();
     var videoId = evt.target.name;
-    VideoManageAction.deleteVideoInfo(videoId);
+    CheckVideoAction.deleteVideoInfo(videoId);
 
     jQuery(".edit button[name="+videoId+"]").hide();
     jQuery(".delete button[name="+videoId+"]").html('已删除');
+  },
+
+  checkPass:function(evt){
+    evt.preventDefault();
+    var videoId = evt.target.name;
+    CheckVideoAction.checkVideoPass(videoId);
+
+    jQuery(".edit button[name="+videoId+"]").hide();
+    jQuery(".delete button[name="+videoId+"]").hide();
+    jQuery(".checkpass button[name="+videoId+"]").html('已通过');
   },
 
   calcTime:function(size){
@@ -135,7 +138,7 @@ var VideoList = React.createClass({
 
   render: function () {
 
-    var videolistResults = this.props.videoList;
+    var videolistResults = this.props.checkvideoList;
     var itemLength = this.props.itemLength;
 
     var result;
@@ -158,6 +161,9 @@ var VideoList = React.createClass({
                      </div>
                      <div className="delete operation">
                         <button name={videoItem._id} onClick={this.deleteInfo}>删除</button>
+                     </div>
+                     <div className="checkpass operation">
+                        <button name={videoItem._id} onClick={this.checkPass}>通过</button>
                      </div>
                   </div>
                   </div>

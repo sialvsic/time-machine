@@ -16,13 +16,6 @@ UserManageController.prototype.getAllUserList = (req, res, next) => {
     var type = req.query.type;
     var key = req.query.key;
     var page = req.query.page;
-    console.log(type);
-    console.log(key);
-    console.log(key === null);
-    console.log(key === '');
-
-    console.log(page);
-
 
     var doc = {};
     var length;

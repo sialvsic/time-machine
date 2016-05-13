@@ -22,6 +22,7 @@ VideoController.prototype.getVideo = (req, res, next) => {
   async.waterfall([
     (done)=> {
       //根据videoId 去查找 视频资源
+      
       Video.findById(videoId, ('mimetype path thumbupNumber'), done)
 
     }, (data, done)=> {
