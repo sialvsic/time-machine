@@ -100,9 +100,6 @@ UserCenterController.prototype.getStar = (req, res, next) => {
     var userId = req.session.user.id;
     var pageNo = req.params.pageNo;
 
-
-    console.log(pageNo);
-
     // 此用法可以拿到数据但是不能skip 不能分页 自己手写一个分页
     // User.find({
     //         _id: mongoose.Types.ObjectId(userId)
@@ -140,8 +137,13 @@ UserCenterController.prototype.getStar = (req, res, next) => {
 
             var showStarList = starList.slice(skip, skip + limit);
 
-            var respose = Object.assign({}, {starList: showStarList}, {itemLength: itemLength},{pageNo:pageNo});
-              console.log(respose);
+            var respose = Object.assign({}, {
+                starList: showStarList
+            }, {
+                itemLength: itemLength
+            }, {
+                pageNo: pageNo
+            });
             res.send(respose);
         });
 

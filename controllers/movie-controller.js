@@ -3,16 +3,18 @@ var constant = require('../mixin/constant');
 var Video = require('../models/video');
 var httpStatus = require('../mixin/constant').httpCode;
 
-function MovieController() {
-}
+function MovieController() {}
 
 MovieController.prototype.getMovies = (req, res, next) => {
 
-  //查找电影
-  Video.find({category: '电影'}, ('screenshotsPath title description label'), (err, doc)=> {
-    if (err) return next(err);
-    res.send(doc);
-  })
+    //查找电影
+    Video.find({
+        category: '电影',
+        isChecked: true
+    }, ('screenshotsPath title description label'), (err, doc) => {
+        if (err) return next(err);
+        res.send(doc);
+    })
 };
 
 module.exports = MovieController;
