@@ -17,7 +17,7 @@ var vedioSchema = new Schema({
   size: String,           //文件大小
   truncated: {type: Boolean, default: false},       //是否进行压缩
   buffer: {type: String, default: false},           //是否是流媒体
-  title: String,          //视频标题
+  title: String,          //视频标题 视频名称
   category: String,       //视频分类
   label: String,          //视频标签
   description: String,    //视频描述
