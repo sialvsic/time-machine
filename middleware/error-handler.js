@@ -1,8 +1,8 @@
 'use strict';
 
-var constant = require('../mixin/constant');
-var react = require('react');
+var React = require('react');
 var ReactDOM = require('react-dom');
+var constant = require('../mixin/constant');
 
 var errorHandler = function (req) {
   req.on('response', function (res) {
