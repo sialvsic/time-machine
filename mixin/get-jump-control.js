@@ -9,7 +9,7 @@ function jumpControl(data) {
 
   return [{
     originPath: [
-      'video.html',
+      // 'video.html',
       'upload.html'
     ],
     targetPath: '/register.html',
