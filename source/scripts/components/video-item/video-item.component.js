@@ -20,7 +20,7 @@ var VedioItem = React.createClass({
 
     if (vedioItems.length !== 0) {
       views = vedioItems.map((vedioItems, index)=> {
-        var vedioHref = 'video.html#' + vedioItems._id;
+        var vedioHref = 'video.html?' + vedioItems._id;
         return (
             <div key={index} className="col-md-2">
               <div id="vedio-item">

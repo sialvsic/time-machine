@@ -7,6 +7,15 @@ var VideoFuncStore = require('../../store/videofunc/videofunc-store');
 var VideoStore = require('../../store/video/video-store');
 var page = require('page');
 
+
+function isEmptyObject(Object) {
+  for (var key in Object) {
+    return false;
+  }
+  return true;
+}
+
+
 var VideoFunc = React.createClass({
 
   mixins: [Reflux.connect(VideoFuncStore), Reflux.connect(VideoStore)],
@@ -98,6 +107,8 @@ var VideoFunc = React.createClass({
     var starStatus = this.state.starStatus ?
         (<i className="fa fa-star" aria-hidden="true"/>) :
         (<i className="fa fa-star-o" aria-hidden="true"/>);
+
+
 
 
     return (

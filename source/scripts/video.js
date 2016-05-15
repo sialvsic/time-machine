@@ -21,7 +21,7 @@ var Video = React.createClass({
   },
 
   componentWillMount: function () {
-    var videoPath = window.location.href.split('#');
+    var videoPath = window.location.href.split('?');
     VideoActions.getVideo(videoPath[1]);
   },
 
