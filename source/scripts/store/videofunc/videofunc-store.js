@@ -56,6 +56,10 @@ var VedioplayStore = Reflux.createStore({
             .set('Content-Type', 'application/json')
             .use(errorHandler)
             .end((err, req) => {
+                if (err) {
+                    console.log(err.message);
+                    return;
+                }
                 this.trigger(req.body)
             });
     }

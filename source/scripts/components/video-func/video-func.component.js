@@ -85,11 +85,9 @@ var VideoFunc = React.createClass({
       page('register.html');
       return ;
     }
-
-    //向后台发送请求,设置最新的视频收藏状态
-    VideoFuncActions.download(videoId);
+    var videoId = this.props.videoPlayInfo._id;
+    page('/video/download/'+ videoId);
   },
-
 
   render: function () {
 
@@ -108,24 +106,26 @@ var VideoFunc = React.createClass({
             <section className="content">
               <ol className="">
                 <li className="" onClick={this.download}>
-                  <span className="download" >
+                  <span>
                     <i className="fa fa-download" aria-hidden="true"/>
                   </span>
-                  <span>'下载'</span>
+                  <span className="download" onClick={this.download} >
+                    下载
+                  </span>
                 </li>
 
-                <li className="" onClick={this.star}>
-                  <span className="star" >
+                <li className="" >
+                  <span className="star" onClick={this.star} >
                     {starStatus}
                   </span>
-                  <span>{this.state.starStatus ? '已收藏' : '收藏'}</span>
+                  <span onClick={this.star}>{this.state.starStatus ? '已收藏' : '收藏'}</span>
                 </li>
 
-                <li className="" onClick={this.thumb}>
-                  <span className="thumb" >
+                <li className="" >
+                  <span className="thumb" onClick={this.thumb} >
                     {thumbsupStatus}
                   </span>
-                  <span>{this.state.thumbsupNumbers}</span>
+                  <span onClick={this.thumb}>{this.state.thumbsupNumbers}</span>
                 </li>
               </ol>
             </section>
