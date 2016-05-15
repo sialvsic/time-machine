@@ -5,6 +5,7 @@ var Reflux = require('reflux');
 var VideoFuncActions = require('../../actions/videofunc/videofunc-actions');
 var VideoFuncStore = require('../../store/videofunc/videofunc-store');
 var VideoStore = require('../../store/video/video-store');
+var page = require('page');
 
 var VideoFunc = React.createClass({
 
@@ -14,11 +15,20 @@ var VideoFunc = React.createClass({
     return {
       thumbsupStatus: false,
       thumbsupNumbers: 0,
-      starStatus: false
+      starStatus: false,
+      isLogin: false
     }
   },
 
+  componentWillMount: function () {
+    VideoFuncActions.getLoginStatus();
+  },
+
   thumb: function () {
+    if(!this.state.isLogin){
+      page('register.html');
+      return ;
+    }
     var thumbsupStatus = !this.state.thumbsupStatus;
     var videoId = this.props.videoPlayInfo._id;
 
@@ -45,6 +55,10 @@ var VideoFunc = React.createClass({
   },
 
   star: function () {
+    if(!this.state.isLogin){
+      page('register.html');
+      return ;
+    }
     var starStatus = !this.state.starStatus;
     var videoId = this.props.videoPlayInfo._id;
 
@@ -66,6 +80,16 @@ var VideoFunc = React.createClass({
 
   },
 
+  download: function () {
+    if(!this.state.isLogin){
+      page('register.html');
+      return ;
+    }
+
+    //向后台发送请求,设置最新的视频收藏状态
+    VideoFuncActions.download(videoId);
+  },
+
 
   render: function () {
 
@@ -83,15 +107,22 @@ var VideoFunc = React.createClass({
           <div className="container">
             <section className="content">
               <ol className="">
-                <li className="">
-                  <span className="star" onClick={this.star}>
+                <li className="" onClick={this.download}>
+                  <span className="download" >
+                    <i className="fa fa-download" aria-hidden="true"/>
+                  </span>
+                  <span>'下载'</span>
+                </li>
+
+                <li className="" onClick={this.star}>
+                  <span className="star" >
                     {starStatus}
                   </span>
                   <span>{this.state.starStatus ? '已收藏' : '收藏'}</span>
                 </li>
 
-                <li className="">
-                  <span className="thumb" onClick={this.thumb}>
+                <li className="" onClick={this.thumb}>
+                  <span className="thumb" >
                     {thumbsupStatus}
                   </span>
                   <span>{this.state.thumbsupNumbers}</span>
@@ -106,4 +137,3 @@ var VideoFunc = React.createClass({
 });
 
 module.exports = VideoFunc;
-

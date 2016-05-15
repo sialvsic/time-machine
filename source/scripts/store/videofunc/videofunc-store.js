@@ -9,43 +9,56 @@ var errorHandler = require('../../../../middleware/error-handler');
 var VideofuncActions = require('../../actions/videofunc/videofunc-actions');
 
 var VedioplayStore = Reflux.createStore({
-  listenables: VideofuncActions,
+    listenables: VideofuncActions,
 
-  onSetThumbsUpStatus: function (thumbsupStatus, videoId) {
+    onSetThumbsUpStatus: function(thumbsupStatus, videoId) {
 
-    var url = '/video/' + videoId + '/thumbsupStatus';
-    var data = {
-      thumbsupStatus: thumbsupStatus
-    };
+        var url = '/video/' + videoId + '/thumbsupStatus';
+        var data = {
+            thumbsupStatus: thumbsupStatus
+        };
 
-    request.put(url)
-        .set('Content-Type', 'application/json')
-        .send(data)
-        .use(errorHandler)
-        .end((err, req)=> {
+        request.put(url)
+            .set('Content-Type', 'application/json')
+            .send(data)
+            .use(errorHandler)
+            .end((err, req) => {
+                if (err) {
+                    console.log(err.message);
+                }
 
-          //this.trigger({videoPlayInfo: req.body})
+            });
+    },
 
-        });
-  },
+    onSetStarStatus: function(starStatus, videoId) {
 
-  onSetStarStatus: function (starStatus, videoId) {
+        var url = '/video/' + videoId + '/starStatus';
+        var data = {
+            starStatus: starStatus
+        };
 
-    var url = '/video/' + videoId + '/starStatus';
-    var data = {
-      starStatus: starStatus
-    };
+        request.put(url)
+            .set('Content-Type', 'application/json')
+            .send(data)
+            .use(errorHandler)
+            .end((err, req) => {
+                if (err) {
+                    console.log(err.message);
+                }
+            });
+    },
 
-    request.put(url)
-        .set('Content-Type', 'application/json')
-        .send(data)
-        .use(errorHandler)
-        .end((err, req)=> {
+    onGetLoginStatus: function(thumbsupStatus, videoId) {
 
-          //this.trigger({videoPlayInfo: req.body})
+        var url = '/account/status';
 
-        });
-  }
+        request.get(url)
+            .set('Content-Type', 'application/json')
+            .use(errorHandler)
+            .end((err, req) => {
+                this.trigger(req.body)
+            });
+    }
 
 
 });

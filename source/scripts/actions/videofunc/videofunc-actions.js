@@ -4,7 +4,8 @@ var Reflux = require('reflux');
 
 var VideofuncActions = Reflux.createActions([
   'setThumbsUpStatus',
-  'setStarStatus'
+  'setStarStatus',
+  'getLoginStatus'
 ]);
 
 module.exports = VideofuncActions;
