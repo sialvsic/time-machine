@@ -12,8 +12,15 @@ function VideoController() {
 
 }
 
+//播放获取视频信息
 VideoController.prototype.getVideo = (req, res, next) => {
-  var userId = req.session.user.id;
+  // var userId = req.session.user.id;
+  var isUserExist  = false;
+
+  if(req.session.user){
+    isUserExist = true;
+    var userId = req.session.user.id;
+  }
   var videoId = req.params.videoId;
   var videoInfo = {};
   var starStatus = false;
@@ -22,7 +29,7 @@ VideoController.prototype.getVideo = (req, res, next) => {
   async.waterfall([
     (done)=> {
       //根据videoId 去查找 视频资源
-      
+
       Video.findById(videoId, ('mimetype path thumbupNumber'), done)
 
     }, (data, done)=> {
@@ -32,7 +39,11 @@ VideoController.prototype.getVideo = (req, res, next) => {
       videoInfo._id = data._id;
 
       //然后查找用户,更新用户的点赞列表
-      User.findOne({_id: userId}, done);
+      if(isUserExist){
+        User.findOne({_id: userId}, done);
+      }else{
+        done(true,null)
+      }
 
     }, (data, done)=> {
       var star = data.star.find((item)=> {
@@ -54,14 +65,15 @@ VideoController.prototype.getVideo = (req, res, next) => {
       done(null, null);
     }
   ], (err, data)=> {
-    if (err)  return next(err);
+    
+    if (err && err !==true)  return next(err);
 
     var videoNewInfo = Object.assign({}, videoInfo, {
       thumbsupStatus: thumbsupStatus
     }, {
       starStatus: starStatus
     });
-
+    console.log(videoNewInfo);
     res.send(videoNewInfo);
   });
 };
@@ -96,6 +108,7 @@ VideoController.prototype.setThumbsUpStatus = (req, res, next) => {
       if (thumbsUpStatus) {
         data.thumbsup.push(videoId);
       } else {
+        //删除点赞列表
         var index = data.thumbsup.indexOf(videoId);
         if (index > -1) {
           data.thumbsup.splice(index, 1);
@@ -131,6 +144,7 @@ VideoController.prototype.setStarStatus = (req, res, next) => {
       } else {
         var index = data.star.indexOf(videoId);
         if (index > -1) {
+          //删除收藏列表
           data.star.splice(index, 1);
         }
       }
