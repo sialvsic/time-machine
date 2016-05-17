@@ -1,5 +1,8 @@
 @import "common/main";
 
+body{
+  // background-color: black;
+}
 #video-div {
 
   #navigation nav .row div .search-form {
@@ -42,10 +45,13 @@
   }
 
   #videoplay-div {
-    margin-top: 50px;
-    #my-video {
-      width: 100%;
-      height: 600px;
+    .fp-ui{
+      .fp-controls{
+        .fp-brand{
+          display: none;
+        }
+      }
     }
+    margin:50px 154px 0 154px;
   }
 }
