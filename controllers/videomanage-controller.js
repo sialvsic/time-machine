@@ -71,6 +71,7 @@ VideoManageController.prototype.getAllVideoList = (req, res, next) => {
         }, {
             allDatalength: length
         });
+        console.log(respose);
         res.send(respose);
 
     });
