@@ -86,7 +86,7 @@ var SearchResult = React.createClass({
             <div key={index}>
               <div className="col-md-12">
                 <div className="col-md-5">
-                  <img src={searchResult.screenshotsPath} alt=""/>
+                  <img src={searchResult.lowScreenshotsPath} alt=""/>
                 </div>
                 <div className="col-md-7">
                   <div>

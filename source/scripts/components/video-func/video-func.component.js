@@ -25,7 +25,8 @@ var VideoFunc = React.createClass({
       thumbsupStatus: false,
       thumbsupNumbers: 0,
       starStatus: false,
-      isLogin: false
+      isLogin: false,
+      playNumber: 0
     }
   },
 
@@ -162,6 +163,11 @@ var VideoFunc = React.createClass({
                   </span>
                   <span onClick={this.thumb}>{this.state.thumbsupNumbers}</span>
                 </li>
+
+                <li className="play-number" >
+                  <span className="playNumber">播放量：</span>
+                  <span>{this.state.playNumber}</span>
+                  </li>
               </ol>
             </section>
           </div>

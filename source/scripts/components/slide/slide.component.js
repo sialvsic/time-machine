@@ -21,10 +21,11 @@ function initSlide() {
 
 
 var Slide = React.createClass({
-  componentWillMount: ()=> {
+  componentWillMount: function (){
     initSlide();
   },
-  render: ()=> {
+
+  render: function() {
     return (
         <div id="slide">
           <section className="sample" data-slidizle>

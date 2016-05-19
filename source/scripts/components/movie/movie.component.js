@@ -6,7 +6,6 @@ var VideoItem = require('../video-item/video-item.component');
 var MovieActions = require('../../actions/movie/movie-actions');
 var MovieStore = require('../../store/movie/movie-store');
 
-
 var Movie = React.createClass({
 
   mixins: [Reflux.connect(MovieStore)],
@@ -29,7 +28,7 @@ var Movie = React.createClass({
 
   render: function () {
 
-    var movieList = this.state.movieList.length === 0 ? '' : (<VideoItem vedioItems={this.state.movieList}/>);
+    var movieList = this.state.movieList.length === 0 ? '' : (<VideoItem videoItems={this.state.movieList}/>);
 
     return (
         <div id="movie-div" className="container-fluid">

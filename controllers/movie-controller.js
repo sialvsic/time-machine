@@ -11,7 +11,7 @@ MovieController.prototype.getMovies = (req, res, next) => {
     Video.find({
         category: '电影',
         isChecked: true
-    }, ('screenshotsPath title description label'), (err, doc) => {
+    }, ('lowScreenshotsPath title description label'), (err, doc) => {
         if (err) return next(err);
         res.send(doc);
     })

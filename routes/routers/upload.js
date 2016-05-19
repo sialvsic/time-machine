@@ -9,10 +9,10 @@ var ffmpeg = require('fluent-ffmpeg');
 
 var Video = require('../../models/video');
 
-function takeScreeshots(fileName, fileType, callback) {
+function takeLowScreeshots(fileName, fileType, callback) {
 
     var originalFileLocation = __dirname + '/../../public/video/' + fileName;
-    var photoName = fileName.replace(fileType, 'png');
+    var photoName = fileName.replace(fileType, 'low.png');
     var photoLocation = __dirname + '/../../public/screeshots';
 
     ffmpeg(originalFileLocation)
@@ -28,7 +28,30 @@ function takeScreeshots(fileName, fileType, callback) {
             count: 1,
             folder: photoLocation,
             size: '320x240'
-        });
+        })
+
+}
+
+function takeHighScreeshots(fileName, fileType, callback) {
+
+    var originalFileLocation = __dirname + '/../../public/video/' + fileName;
+    var photoName = fileName.replace(fileType, 'high.png');
+    var photoLocation = __dirname + '/../../public/screeshots';
+
+    ffmpeg(originalFileLocation)
+        .on('filenames', function(filenames) {
+            console.log('Will generate ' + filenames.join(', '))
+        })
+        .on('end', function(err, doc) {
+            callback(err, doc);
+        })
+        .screenshots({
+            // Will take screens at 20%, 40%, 60% and 80% of the video
+            filename: photoName,
+            count: 1,
+            folder: photoLocation,
+            size: '1920x1024'
+        })
 
 }
 
@@ -57,36 +80,53 @@ router.post('/', (req, res, next) => {
             } else {
 
                 //不存在,需要要记录一条记录 并生成图片
-                takeScreeshots(fileName, fileType, (err, doc) => {
-                    if (err) {
-                        done(err, null);
-                    } else {
-                        if (file.fileInfo.mimetype === 'video/x-flv') {
-                            file.fileInfo.mimetype = 'video/flv';
-                        }
-                        var creatTime = Date.parse(new Date()) / constant.time.MILLISECOND_PER_SECONDS;
-                        var screenshotsPath = '/screeshots/' + fileName.replace(fileType, 'png');
+                takeLowScreeshots(fileName, fileType, (err, doc) => {
+                      if (err) {
+                          done(err, null);
+                          return ;
+                      }
 
-                        var vedioInfo = Object.assign({}, file.fileInfo, {
-                            createTime: creatTime
-                        }, {
-                            userId: userId
-                        }, {
-                            screenshotsPath: screenshotsPath
-                        });
+                   takeHighScreeshots(fileName, fileType, (err, doc) => {
 
-                        var vedio = new Video(vedioInfo);
-                        vedio.save((err, doc, affectNum) => {
-                            done(err, doc);
-                        })
-                    }
+                       if (err) {
+                           done(err, null);
+                           return ;
+                       }
+
+                       if (file.fileInfo.mimetype === 'video/x-flv') {
+                           file.fileInfo.mimetype = 'video/flv';
+                       }
+
+                       var creatTime = Date.parse(new Date()) / constant.time.MILLISECOND_PER_SECONDS;
+
+                       var lowScreenshotsPath = '/screeshots/' + fileName.replace(fileType, 'low.png');
+                       var highScreenshotsPath = '/screeshots/' + fileName.replace(fileType, 'high.png');
+
+                       var videoInfo = Object.assign({}, file.fileInfo, {
+                           createTime: creatTime
+                       }, {
+                           userId: userId
+                       }, {
+                           lowScreenshotsPath: lowScreenshotsPath,
+                           highScreenshotsPath: highScreenshotsPath
+                       });
+
+                       console.log(videoInfo);
+                       var video = new Video(videoInfo);
+                       video.save((err, doc, affectNum) => {
+                           done(err, doc);
+                       });
+                   });
+
                 });
             }
         }
     ], (err, data) => {
+        console.log('12344');
+        console.log(err);
 
         if (err) return next(err);
-
+        console.log('OK');
         res.send({
             status: constant.httpCode.OK
         });
@@ -97,7 +137,6 @@ router.post('/', (req, res, next) => {
 router.post('/form', (req, res, next) => {
     var userId = req.session.user.id;
     var form = req.body;
-
     //因为视频已经上传,但是可能详细的信息并没有填写 所以在此处要先查询该用户没填写详细信息的视频
     Video.findOne({
         userId: userId,

@@ -17,11 +17,13 @@ var VideoStore = Reflux.createStore({
         .set('Content-Type', 'application/json')
         .use(errorHandler)
         .end((err, req)=> {
+          console.log(req.body);
           this.trigger({
             videoPlayInfo: req.body,
             thumbsupNumbers: req.body.thumbupNumber,
             thumbsupStatus: req.body.thumbsupStatus,
-            starStatus: req.body.starStatus
+            starStatus: req.body.starStatus,
+            playNumber: req.body.playNumber
           })
         });
   }

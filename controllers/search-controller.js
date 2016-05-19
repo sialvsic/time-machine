@@ -36,7 +36,7 @@ SearchController.prototype.getSearchResult = (req, res, next) => {
             var query = Video.find({
                 title: reg,
                 isChecked: true
-            }, ('createTime title label description category screenshotsPath path'));
+            }, ('createTime title label description category lowScreenshotsPath path'));
             //skip 跳过x个
             //limit 读取x个
             query.skip(skip).limit(itemPerPage).exec('find', done);

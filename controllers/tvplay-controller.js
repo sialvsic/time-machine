@@ -14,7 +14,7 @@ TVplayController.prototype.getTVplays = (req, res, next) => {
     Vedio.find({
         category: '电视剧',
         isChecked: true
-    }, ('screenshotsPath title description label'), (err, doc) => {
+    }, ('lowScreenshotsPath title description label'), (err, doc) => {
         if (err) return next(err);
         res.send(doc);
     })

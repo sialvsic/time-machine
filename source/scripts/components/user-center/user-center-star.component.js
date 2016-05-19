@@ -71,7 +71,7 @@ var UserCenterStar = React.createClass({
           <div key={index}>
                <div className="col-md-12">
                     <div className="col-md-5">
-                     <img src={starItem.screenshotsPath} alt=""/>
+                     <img src={starItem.lowScreenshotsPath} alt=""/>
                     </div>
             <div className="col-md-7">
               <div>

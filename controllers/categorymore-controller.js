@@ -33,7 +33,7 @@ CategoryMoreController.prototype.getCategoryMore = (req, res, next) => {
             var query = Video.find({
                 category: category,
                 isChecked: true
-            }, ('createTime title label description category screenshotsPath path'));
+            }, ('createTime title label description category lowScreenshotsPath path'));
             //skip 跳过x个
             //limit 读取x个
             query.skip(skip).limit(itemPerPage).exec('find', done);

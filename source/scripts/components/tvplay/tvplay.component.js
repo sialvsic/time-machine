@@ -28,7 +28,7 @@ var TVplay = React.createClass({
 
 
   render: function () {
-    var tvplayList = this.state.tvplayList.length === 0 ? '' : (<VideoItem vedioItems={this.state.tvplayList}/>);
+    var tvplayList = this.state.tvplayList.length === 0 ? '' : (<VideoItem videoItems={this.state.tvplayList}/>);
 
     return (
         <div id="tvplay-div" className="container-fluid">

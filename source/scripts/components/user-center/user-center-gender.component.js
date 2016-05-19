@@ -55,7 +55,7 @@ var UserCenterGender = React.createClass({
           <div className="col-sm-4 col-md-4">
             {tags.map((item, index) => {
               return (
-                  <div key={index} className="col-sm-3 col-md-3">
+                  <div key={index} className="col-sm-4 col-md-4">
                     <input type="radio" name="gender" className="gender" id={item.genderName}
                            onChange={this.genderChange} ref={item.genderName}/>
                     <label htmlFor={item.genderName}>{item.label}</label>

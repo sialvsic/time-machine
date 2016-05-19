@@ -22,11 +22,12 @@ var vedioSchema = new Schema({
   label: String,          //视频标签
   description: String,    //视频描述
   isDetailsInfoComplete: {type: Boolean, default: false},       //是否信息完整
-  screenshotsPath: String,                          //视频截图的文件
+  lowScreenshotsPath: String,                          //低分辨率视频截图的文件
+  highScreenshotsPath: String,                          //高分辨率视频截图的文件
   createTime: Number,                               //视频上传的时间,
   thumbupNumber: {type: Number, default: 0},        //点赞数
-  isChecked: {type: Boolean, default: false}        //是否通过审查
-
+  isChecked: {type: Boolean, default: false},        //是否通过审查
+  playNumber: {type: Number, default: 0}            //播放数量
 });
 
 

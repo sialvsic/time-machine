@@ -31,22 +31,29 @@ VideoController.prototype.getVideo = (req, res, next) => {
         (done) => {
             //根据videoId 去查找 视频资源
 
-            Video.findById(videoId, ('mimetype path thumbupNumber'), done)
+            Video.findById(videoId, ('mimetype path thumbupNumber playNumber'), done)
 
         }, (data, done) => {
+          console.log(data);
+          
             videoInfo.thumbupNumber = data.thumbupNumber;
             videoInfo.path = data.path;
             videoInfo.mimetype = data.mimetype;
             videoInfo._id = data._id;
+            videoInfo.playNumber = data.playNumber++;
 
-            //然后查找用户,更新用户的点赞列表
-            if (isUserExist) {
-                User.findOne({
-                    _id: userId
-                }, done);
-            } else {
-                done(true, null)
-            }
+            //将此视频到播放数量+1,保存
+            data.save((err,doc,effect)=>{
+              //然后查找用户,更新用户的点赞列表
+
+              if (isUserExist) {
+                  User.findOne({
+                      _id: userId
+                  }, done);
+              } else {
+                  done(true, null)
+              }
+            });
 
         }, (data, done) => {
             var star = data.star.find((item) => {
@@ -76,6 +83,7 @@ VideoController.prototype.getVideo = (req, res, next) => {
         }, {
             starStatus: starStatus
         });
+        console.log(videoNewInfo);
         res.send(videoNewInfo);
     });
 };

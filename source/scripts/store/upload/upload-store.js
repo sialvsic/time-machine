@@ -15,7 +15,6 @@ var UploadStore = Reflux.createStore({
 
 
   onSubmitInfo: function (form) {
-
     request.post('/upload/form')
         .set('Content-Type', 'application/json')
         .send(form)

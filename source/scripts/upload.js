@@ -36,11 +36,7 @@ var Upload = React.createClass({
           });
 
         }else{
-
           $('#fileuploader  input').attr({'disabled':'true'});
-          $('#form-submit').attr({'disabled':false});
-
-
         }
 //        console.log(files); ["You Are My Everything - Gummy.mp3"]
 //        console.log(response);  后台的数据
@@ -83,7 +79,6 @@ var Upload = React.createClass({
 
   submit: function (evt) {
     evt.preventDefault();
-
     var form = {};
     form.title = this.refs.title.value;
     form.category = this.refs.category.value;
@@ -140,7 +135,7 @@ var Upload = React.createClass({
               <div className="form-group">
                 <label htmlFor="inputLabel" className="col-sm-1 control-label">标签</label>
                 <div className="col-sm-11">
-                  <input type="email" className="form-control" ref="label" id="inputLabel" placeholder="请输入标签"></input>
+                  <input type="text" className="form-control" ref="label" id="inputLabel" placeholder="请输入标签"></input>
                 </div>
               </div>
 
@@ -152,7 +147,7 @@ var Upload = React.createClass({
               </div>
 
               <div className="form-group">
-                <button id="form-submit" className="btn btn-default"  disabled onClick={this.submit}>提交</button>
+                <button id="form-submit" className="btn btn-default"   onClick={this.submit}>提交</button>
               </div>
 
             </form>

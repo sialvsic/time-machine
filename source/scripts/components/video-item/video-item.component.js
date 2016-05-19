@@ -7,31 +7,32 @@ var Reflux = require('reflux');
 //var MovieStore = require('../../store/movie/movie-store');
 
 
-var VedioItem = React.createClass({
+var VideoItem = React.createClass({
 
   //mixins: [Reflux.connect(MovieStore)],
 
   componentWillMount: function () {
+
   },
 
   render: function () {
-    var vedioItems = this.props.vedioItems;
+    var videoItems = this.props.videoItems;
     var views;
 
-    if (vedioItems.length !== 0) {
-      views = vedioItems.map((vedioItems, index)=> {
-        var vedioHref = 'video.html?' + vedioItems._id;
+    if (videoItems.length !== 0) {
+      views = videoItems.map((videoItem, index)=> {
+        var videoHref = 'video.html?' + videoItem._id;
         return (
             <div key={index} className="col-md-2">
-              <div id="vedio-item">
-                <a className="vedio-item-img" href={vedioHref}>
-                  <img src={vedioItems.screenshotsPath}
+              <div id="video-item">
+                <a className="video-item-img" href={videoHref}>
+                  <img src={videoItem.lowScreenshotsPath}
                        alt=""/>
-                  <p className="vedio-item-title">
-                    {vedioItems.title}
+                  <p className="video-item-title">
+                    {videoItem.title}
                   </p>
-                  <p className="vedio-item-description">
-                    {vedioItems.description}
+                  <p className="video-item-description">
+                    {videoItem.description}
                   </p>
                 </a>
               </div>
@@ -40,11 +41,11 @@ var VedioItem = React.createClass({
     }
 
     return (
-        <div id="vedio-item-div">
+        <div id="video-item-div">
           {views}
         </div>
     );
   }
 });
 
-module.exports = VedioItem;
+module.exports = VideoItem;
