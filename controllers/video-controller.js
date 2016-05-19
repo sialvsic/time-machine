@@ -34,8 +34,7 @@ VideoController.prototype.getVideo = (req, res, next) => {
             Video.findById(videoId, ('mimetype path thumbupNumber playNumber'), done)
 
         }, (data, done) => {
-          console.log(data);
-          
+
             videoInfo.thumbupNumber = data.thumbupNumber;
             videoInfo.path = data.path;
             videoInfo.mimetype = data.mimetype;
@@ -83,7 +82,6 @@ VideoController.prototype.getVideo = (req, res, next) => {
         }, {
             starStatus: starStatus
         });
-        console.log(videoNewInfo);
         res.send(videoNewInfo);
     });
 };
