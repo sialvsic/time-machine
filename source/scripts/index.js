@@ -9,7 +9,7 @@ var Slide = require('./components/slide/slide.component');
 var Account = require('./components/account/account.component');
 var Movie = require('./components/movie/movie.component.js');
 var TVplay = require('./components/tvplay/tvplay.component.js');
-
+var Anime = require('./components/anime/anime.component.js');
 
 var Index = React.createClass({
   componentWillMount: ()=> {
@@ -26,6 +26,7 @@ var Index = React.createClass({
           <Slide/>
           <Movie/>
           <TVplay/>
+          <Anime/>
           <Footer/>
         </div>
     )

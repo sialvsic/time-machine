@@ -23,6 +23,9 @@ var CategoryMoreStore = Reflux.createStore({
     }, {
       html: 'tvplaysmore.html',
       category: '电视剧'
+    },{
+      html: 'animesmore.html',
+      category: '动漫'
     }];
 
     var item = categoryHash.find((item)=> {
