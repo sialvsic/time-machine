@@ -12,7 +12,6 @@ function isEmptyObject(Object) {
 var VideoPlay = React.createClass({
 
   componentDidUpdate:function(){
-    console.log('i am in ');
     var container = document.getElementById("video-play");
 
      if(!isEmptyObject(this.props.videoPlayInfo)){

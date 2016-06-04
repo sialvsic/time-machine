@@ -1,26 +1,28 @@
 'use strict';
 
 var Reflux = require('reflux');
-var TVplayActions = require('../../actions/tvplay/tvplay-actions');
+var SlideActions = require('../../actions/slide/slide-actions');
 var request = require('superagent');
 var errorHandler = require('../../../../middleware/error-handler');
 
+var SlideStore = Reflux.createStore({
+  listenables: SlideActions,
 
-var TVplayStore = Reflux.createStore({
-  listenables: TVplayActions,
+  onGetPopVideo: function () {
 
-  onGetTVplay: function () {
-    request.get('/tvplays')
+    request.get('/video/pop/top')
         .set('Content-Type', 'application/json')
         .use(errorHandler)
         .end((err, req) => {
 
           this.trigger({
-            tvplayList: req.body
+            popList: req.body.popList,
+            idList: req.body.idList
+
           });
         });
   }
 
 });
 
-module.exports = TVplayStore;
+module.exports = SlideStore;

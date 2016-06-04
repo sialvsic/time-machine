@@ -9,5 +9,6 @@ router.get('/:videoId', videoController.getVideo);
 router.put('/:videoId/thumbsupStatus', videoController.setThumbsUpStatus);
 router.put('/:videoId/starStatus', videoController.setStarStatus);
 router.get('/download/:videoId', videoController.download);
+router.get('/pop/top', videoController.popVideo);
 
 module.exports = router;

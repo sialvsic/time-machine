@@ -86,7 +86,7 @@ var UserCenterStar = React.createClass({
               <div>
                 <div className="click-play">
                   <a className="button button-highlight button-rounded button-small"
-                     href={ 'video.html#' + starItem._id}>点此播放</a>
+                     href={ 'video.html?' + starItem._id}>点此播放</a>
                 </div>
               </div>
             </div>

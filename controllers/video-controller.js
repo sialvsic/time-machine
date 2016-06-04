@@ -17,7 +17,6 @@ function VideoController() {
 VideoController.prototype.getVideo = (req, res, next) => {
     // var userId = req.session.user.id;
     var isUserExist = false;
-
     if (req.session.user) {
         isUserExist = true;
         var userId = req.session.user.id;
@@ -194,6 +193,34 @@ VideoController.prototype.download = (req, res, next) => {
         var fileName = '[时光机]-' + preName;
         res.download(file, fileName);
 
+    });
+
+};
+
+//获取slide的全站点击量最高的视频
+VideoController.prototype.popVideo = (req, res, next) => {
+
+    //查找所有视频中点击量最高的
+    var query = Video.find({
+        isChecked: true
+    }, ('highScreenshotsPath title description label playNumber'));
+
+    query.sort('-playNumber').limit(5).exec('find', (err,doc)=>{
+      if (err) {
+        return next(err);
+      }
+      var arr = doc.map((item)=>{
+        return item.highScreenshotsPath;
+      });
+
+      var idList = doc.map((item)=>{
+        return item._id;
+      })
+
+      res.send({
+        popList:arr,
+        idList:idList
+      });
     });
 
 };

@@ -6,7 +6,6 @@ var constant = require('../../mixin/constant');
 var async = require('async');
 var ffmpeg = require('fluent-ffmpeg');
 
-
 var Video = require('../../models/video');
 
 function takeLowScreeshots(fileName, fileType, callback) {
@@ -61,7 +60,6 @@ router.post('/', (req, res, next) => {
     var fileName = file.fileInfo.originalname;
     var fileType = file.fileInfo.extension;
 
-    console.log(file);
     if(fileType !== 'mp4' && fileType !=='flv'){
       res.send({status:403})
       return ;
@@ -99,8 +97,8 @@ router.post('/', (req, res, next) => {
 
                        var creatTime = Date.parse(new Date()) / constant.time.MILLISECOND_PER_SECONDS;
 
-                       var lowScreenshotsPath = '/screeshots/' + fileName.replace(fileType, 'low.png');
-                       var highScreenshotsPath = '/screeshots/' + fileName.replace(fileType, 'high.png');
+                       var lowScreenshotsPath = 'screeshots/' + fileName.replace(fileType, 'low.png');
+                       var highScreenshotsPath = 'screeshots/' + fileName.replace(fileType, 'high.png');
 
                        var videoInfo = Object.assign({}, file.fileInfo, {
                            createTime: creatTime
@@ -111,7 +109,6 @@ router.post('/', (req, res, next) => {
                            highScreenshotsPath: highScreenshotsPath
                        });
 
-                       console.log(videoInfo);
                        var video = new Video(videoInfo);
                        video.save((err, doc, affectNum) => {
                            done(err, doc);
@@ -122,11 +119,8 @@ router.post('/', (req, res, next) => {
             }
         }
     ], (err, data) => {
-        console.log('12344');
-        console.log(err);
 
         if (err) return next(err);
-        console.log('OK');
         res.send({
             status: constant.httpCode.OK
         });

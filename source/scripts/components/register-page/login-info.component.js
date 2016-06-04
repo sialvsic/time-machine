@@ -44,12 +44,14 @@ var LoginInfo = React.createClass({
               {this.state.isLoginState ? '立即注册' : '立即登录'}
             </a>
           </div>
-          <div className={passwordRetrieve}>
-            忘记密码?<a href="password-retrieve.html">立即找回</a>
-          </div>
+
         </div>
     );
   }
 });
 
 module.exports = LoginInfo;
+
+// <div className={passwordRetrieve}>
+//   忘记密码?<a href="password-retrieve.html">立即找回</a>
+// </div>

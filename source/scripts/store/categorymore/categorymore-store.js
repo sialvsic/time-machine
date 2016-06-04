@@ -12,7 +12,7 @@ var CategoryMoreStore = Reflux.createStore({
 
   onGetCategoryMore: function (href) {
 
-    var field = href.split('localhost:5299/')[1];
+    var field = href.split(':5299/')[1];
     var page = href.split('?page=')[1];
     var html = field.split('?page=')[0];
 

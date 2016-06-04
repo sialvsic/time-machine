@@ -26,7 +26,7 @@ var SearchResult = React.createClass({
         pageNo = 1;
       }
 
-      var field = window.location.href.split('localhost:5299/')[1];
+      var field = window.location.href.split(':5299/')[1];
       var html = field.split('?page=')[0];
 
       //生成分页
@@ -86,7 +86,7 @@ var SearchResult = React.createClass({
             <div key={index}>
               <div className="col-md-12">
                 <div className="col-md-5">
-                  <img src={searchResult.screenshotsPath} alt=""/>
+                  <img src={searchResult.lowScreenshotsPath} alt=""/>
                 </div>
                 <div className="col-md-7">
                   <div>
