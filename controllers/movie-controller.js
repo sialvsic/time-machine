@@ -8,7 +8,7 @@ function MovieController() {}
 MovieController.prototype.getMovies = (req, res, next) => {
 
     //查找电影
-    var query = Vedio.find({
+    var query = Video.find({
         category: '电影',
         isChecked: true
     }, ('lowScreenshotsPath title description label playNumber'));
@@ -17,7 +17,6 @@ MovieController.prototype.getMovies = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      console.log(doc);
       res.send(doc);
     });
 };
