@@ -11,7 +11,7 @@ var errorHandler = require('../../../../middleware/error-handler');
 var AnimeStore = Reflux.createStore({
   listenables: AnimeActions,
 
-  onGetMovies: function () {
+  onGetAnimes: function () {
     request.get('/animes')
         .set('Content-Type', 'application/json')
         .use(errorHandler)

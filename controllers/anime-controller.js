@@ -7,7 +7,7 @@ function AnimeController() {}
 
 AnimeController.prototype.getAnimes = (req, res, next) => {
 
-    //查找电影
+    //查找动漫
     var query = Video.find({
         category: '动漫',
         isChecked: true
@@ -17,6 +17,7 @@ AnimeController.prototype.getAnimes = (req, res, next) => {
       if (err) {
         return next(err);
       }
+      console.log(doc);
       res.send(doc);
     });
 };

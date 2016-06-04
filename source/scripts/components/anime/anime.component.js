@@ -11,11 +11,6 @@ var Anime = React.createClass({
   mixins: [Reflux.connect(AnimeStore)],
 
   getInitialState: function () {
-    //movieList : [{
-    //   screenshotsPath: String,  //视频截图的文件
-    //   title: String,          //视频标题
-    //   description: String,    //视频描述
-    // }]
     return {
       animeList: []
     }
@@ -23,6 +18,7 @@ var Anime = React.createClass({
 
   componentWillMount: function () {
     AnimeActions.getAnimes();
+    console.log('getAnimes');
   },
 
 
