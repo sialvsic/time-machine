@@ -12,6 +12,9 @@ var TVplay = require('./components/tvplay/tvplay.component.js');
 var Anime = require('./components/anime/anime.component.js');
 var Variety = require('./components/variety/variety.component.js');
 var Educate = require('./components/educate/educate.component.js');
+var New = require('./components/new/new.component.js');
+var Music = require('./components/music/music.component.js');
+var Technology = require('./components/technology/technology.component.js');
 
 var Index = React.createClass({
   componentWillMount: ()=> {
@@ -31,6 +34,9 @@ var Index = React.createClass({
           <Anime/>
           <Variety/>
           <Educate/>
+          <New/>
+          <Music/>
+          <Technology/>
           <Footer/>
         </div>
     )

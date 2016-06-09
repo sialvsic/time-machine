@@ -1,15 +1,14 @@
 'use strict';
 var constant = require('../mixin/constant');
 var Video = require('../models/video');
-var httpStatus = require('../mixin/constant').httpCode;
 
-function EducateController() {}
+function MusicController() {}
 
-EducateController.prototype.getEducates = (req, res, next) => {
+MusicController.prototype.getMusics = (req, res, next) => {
 
-    //查找教育
+    //查找音乐
     var query = Video.find({
-        category: '教育',
+        category: '音乐',
         isChecked: true
     }, ('lowScreenshotsPath title description label playNumber'));
 
@@ -17,9 +16,8 @@ EducateController.prototype.getEducates = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      console.log(doc);
       res.send(doc);
     });
 };
 
-module.exports = EducateController;
+module.exports = MusicController;

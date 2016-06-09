@@ -1,15 +1,14 @@
 'use strict';
 var constant = require('../mixin/constant');
 var Video = require('../models/video');
-var httpStatus = require('../mixin/constant').httpCode;
 
-function EducateController() {}
+function NewController() {}
 
-EducateController.prototype.getEducates = (req, res, next) => {
+NewController.prototype.getNews = (req, res, next) => {
 
-    //查找教育
+    //查找新闻
     var query = Video.find({
-        category: '教育',
+        category: '新闻',
         isChecked: true
     }, ('lowScreenshotsPath title description label playNumber'));
 
@@ -22,4 +21,4 @@ EducateController.prototype.getEducates = (req, res, next) => {
     });
 };
 
-module.exports = EducateController;
+module.exports = NewController;

@@ -12,6 +12,9 @@ exports.setRoutes = function (app) {
   app.use('/tvplays', require('./routers/tvplays'));
   app.use('/varieties', require('./routers/varieties'));
   app.use('/educates', require('./routers/educates'));
+  app.use('/musics', require('./routers/musics'));
+  app.use('/technologys', require('./routers/technologys'));
+  app.use('/news', require('./routers/news'));
   app.use('/video', require('./routers/video'));
   app.use('/search', require('./routers/search'));
   app.use('/categorymore', require('./routers/categorymore'));

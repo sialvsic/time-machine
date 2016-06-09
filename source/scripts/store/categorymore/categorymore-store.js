@@ -19,7 +19,6 @@ var CategoryMoreStore = Reflux.createStore({
     var categoryHash = [{
       html: 'moviesmore.html',
       category: '电影'
-
     }, {
       html: 'tvplaysmore.html',
       category: '电视剧'
@@ -32,6 +31,15 @@ var CategoryMoreStore = Reflux.createStore({
     },{
       html: 'educatesmore.html',
       category: '教育'
+    },{
+      html: 'musicsmore.html',
+      category: '音乐'
+    },{
+      html: 'newsmore.html',
+      category: '新闻'
+    },{
+      html: 'technologysmore.html',
+      category: '科技'
     }];
 
     var item = categoryHash.find((item)=> {
