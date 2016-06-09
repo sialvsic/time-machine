@@ -1,0 +1,88 @@
+#alert {
+  margin-bottom: 0;
+  position: absolute;
+  top: 25px;
+  left: 0;
+  width: 100%;
+}
+#alert .alert span:nth-child(2) {
+  font-weight: bolder;
+}
+#alert .alert span:nth-child(3) {
+  padding-left: 2%;
+}
+#add-user-div #navigation nav .row div .search-form {
+  width: 93%;
+}
+@media (max-width: 768px) {
+  #add-user-div #navigation nav .row div .search-form {
+    width: 100%;
+  }
+}
+#add-user-div #navigation nav .row div .search-form .search-bar {
+  width: 60%;
+}
+@media (max-width: 768px) {
+  #add-user-div #navigation nav .row div .search-form .search-bar {
+    display: inline-block;
+  }
+}
+#add-user-div #navigation nav .row div .search-form .search-bar .search-text {
+  width: 100%;
+}
+#add-user-div #navigation nav .row div .search-form .search-button {
+  height: 34px;
+  width: 112px;
+}
+@media (min-width: 1200px) {
+  #add-user-div #navigation nav .row .nav-account ul li {
+    margin: 0 15px;
+  }
+}
+@media (max-width: 1200px) {
+  #add-user-div #navigation nav .row .nav-account ul li {
+    margin: 0;
+  }
+}
+@media (max-width: 992px) {
+  #add-user-div #navigation nav .row .nav-account ul li a {
+    padding: 15px 10px;
+  }
+}
+#add-user-div #add-user-form {
+  margin-top: 150px;
+}
+#add-user-div #add-user-form .form-top-height {
+  padding-left: 0px;
+}
+#add-user-div #add-user-form .form-top-height label {
+  padding-left: 0px;
+}
+#add-user-div #add-user-form .form-top-height .alert-danger {
+  background-color: white;
+  border-color: white;
+}
+#add-user-div #add-user-form .form-top-height .alert-success {
+  background-color: white;
+  border-color: white;
+}
+#add-user-div #add-user-form .form-top-height .gender {
+  margin-right: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#add-user-div #add-user-form .form-top-height .error {
+  margin: 0px;
+  padding: 8px 0px 0px 3px;
+  border: none;
+  background: rgba(255, 255, 255, 0);
+}
+#add-user-div #add-user-form .form-top-height .select {
+  border: 1px solid red;
+}
+#add-user-div #add-user-form .form-top-height .school-info {
+  padding: 0px;
+}
+#add-user-div #add-user-form .add-user-form-end {
+  margin-top: 30px;
+}

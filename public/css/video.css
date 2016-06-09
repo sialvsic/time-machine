@@ -1,0 +1,57 @@
+#alert {
+  margin-bottom: 0;
+  position: absolute;
+  top: 25px;
+  left: 0;
+  width: 100%;
+}
+#alert .alert span:nth-child(2) {
+  font-weight: bolder;
+}
+#alert .alert span:nth-child(3) {
+  padding-left: 2%;
+}
+#video-div #navigation nav .row div .search-form {
+  width: 93%;
+}
+@media (max-width: 768px) {
+  #video-div #index-page #navigation nav .row div .search-form {
+    width: 100%;
+  }
+}
+#video-div #navigation nav .row div .search-form .search-bar {
+  width: 60%;
+}
+@media (max-width: 768px) {
+  #video-div #index-page #navigation nav .row div .search-form .search-bar {
+    display: inline-block;
+  }
+}
+#video-div #navigation nav .row div .search-form .search-bar .search-text {
+  width: 100%;
+}
+#video-div #navigation nav .row div .search-form .search-button {
+  height: 34px;
+  width: 112px;
+}
+@media (min-width: 1200px) {
+  #video-div #navigation nav .row .nav-account ul li {
+    margin: 0 15px;
+  }
+}
+@media (max-width: 1200px) {
+  #video-div #navigation nav .row .nav-account ul li {
+    margin: 0;
+  }
+}
+@media (max-width: 992px) {
+  #video-div #navigation nav .row .nav-account ul li a {
+    padding: 15px 10px;
+  }
+}
+#video-div #videoplay-div {
+  margin: 50px 145px 0 145px;
+}
+#video-div #videoplay-div .fp-ui .fp-controls .fp-brand {
+  display: none;
+}

@@ -1,0 +1,50 @@
+#alert {
+  margin-bottom: 0;
+  position: absolute;
+  top: 25px;
+  left: 0;
+  width: 100%;
+}
+#alert .alert span:nth-child(2) {
+  font-weight: bolder;
+}
+#alert .alert span:nth-child(3) {
+  padding-left: 2%;
+}
+#videofunc-div {
+  background-color: #292929;
+  height: 52px;
+}
+#videofunc-div div .content ol {
+  margin: 0;
+  color: #F2F2F2;
+}
+#videofunc-div div .content ol li {
+  line-height: 52px;
+  float: right;
+  right: 20px;
+  width: 65px;
+  display: inline-block;
+  margin: 0 10px;
+}
+#videofunc-div div .content ol li span {
+  padding: 0 2px;
+}
+#videofunc-div div .content ol .play-number {
+  width: 90px;
+}
+#videofunc-div div .content ol .star {
+  color: #FACB05;
+}
+#videofunc-div div .content ol .thumb {
+  color: rgba(22, 184, 227, 0.84);
+}
+#videofunc-div div .content ol span:hover {
+  cursor: pointer;
+}
+#videofunc-div div .content ol iframe {
+  float: right;
+  line-height: 45px;
+  margin-right: 40px;
+  margin-top: 18px;
+}

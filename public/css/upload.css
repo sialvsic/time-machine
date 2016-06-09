@@ -1,0 +1,71 @@
+#alert {
+  margin-bottom: 0;
+  position: absolute;
+  top: 25px;
+  left: 0;
+  width: 100%;
+}
+#alert .alert span:nth-child(2) {
+  font-weight: bolder;
+}
+#alert .alert span:nth-child(3) {
+  padding-left: 2%;
+}
+#upload-div #navigation nav .row div .search-form {
+  width: 93%;
+}
+@media (max-width: 768px) {
+  #upload-div #navigation nav .row div .search-form {
+    width: 100%;
+  }
+}
+#upload-div #navigation nav .row div .search-form .search-bar {
+  width: 60%;
+}
+@media (max-width: 768px) {
+  #upload-div #navigation nav .row div .search-form .search-bar {
+    display: inline-block;
+  }
+}
+#upload-div #navigation nav .row div .search-form .search-bar .search-text {
+  width: 100%;
+}
+#upload-div #navigation nav .row div .search-form .search-button {
+  height: 34px;
+  width: 112px;
+}
+@media (min-width: 1200px) {
+  #upload-div #navigation nav .row .nav-account ul li {
+    margin: 0 15px;
+  }
+}
+@media (max-width: 1200px) {
+  #upload-div #navigation nav .row .nav-account ul li {
+    margin: 0;
+  }
+}
+@media (max-width: 992px) {
+  #upload-div #navigation nav .row .nav-account ul li a {
+    padding: 15px 10px;
+  }
+}
+#upload-div .upload-tip {
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 10px;
+}
+#upload-div #fileuploader span {
+  color: #0f0f0f;
+  margin-top: 30px;
+  display: block;
+}
+#upload-div #fileuploader input {
+  line-height: 20px;
+}
+#upload-div #form-submit {
+  display: block;
+  margin: 0 auto;
+}
+#upload-div .well {
+  margin: 0 60px;
+}

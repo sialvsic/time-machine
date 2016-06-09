@@ -1,0 +1,214 @@
+#alert {
+  margin-bottom: 0;
+  position: absolute;
+  top: 25px;
+  left: 0;
+  width: 100%;
+}
+#alert .alert span:nth-child(2) {
+  font-weight: bolder;
+}
+#alert .alert span:nth-child(3) {
+  padding-left: 2%;
+}
+#user-manage-div #navigation nav .row div .search-form {
+  width: 93%;
+}
+@media (max-width: 768px) {
+  #user-manage-div #navigation nav .row div .search-form {
+    width: 100%;
+  }
+}
+#user-manage-div #navigation nav .row div .search-form .search-bar {
+  width: 60%;
+}
+@media (max-width: 768px) {
+  #user-manage-div #navigation nav .row div .search-form .search-bar {
+    display: inline-block;
+  }
+}
+#user-manage-div #navigation nav .row div .search-form .search-bar .search-text {
+  width: 100%;
+}
+#user-manage-div #navigation nav .row div .search-form .search-button {
+  height: 34px;
+  width: 112px;
+}
+@media (min-width: 1200px) {
+  #user-manage-div #navigation nav .row .nav-account ul li {
+    margin: 0 15px;
+  }
+}
+@media (max-width: 1200px) {
+  #user-manage-div #navigation nav .row .nav-account ul li {
+    margin: 0;
+  }
+}
+@media (max-width: 992px) {
+  #user-manage-div #navigation nav .row .nav-account ul li a {
+    padding: 15px 10px;
+  }
+}
+#user-manage-div #kkpager {
+  clear: both;
+  color: #999;
+  padding: 5px 0px 5px 0px;
+  font-size: 13px;
+}
+#user-manage-div #kkpager a {
+  float: left;
+  border: 1px solid #ccc;
+  display: inline;
+  padding: 3px 10px 3px 10px;
+  margin-right: 5px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  cursor: pointer;
+  background: #fff;
+  text-decoration: none;
+  color: #999;
+}
+#user-manage-div #kkpager span.disabled {
+  float: left;
+  display: inline;
+  padding: 3px 10px 3px 10px;
+  margin-right: 5px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border: 1px solid #DFDFDF;
+  background-color: #FFF;
+  color: #DFDFDF;
+}
+#user-manage-div #kkpager span.curr {
+  float: left;
+  border: 1px solid #31ACE2;
+  display: inline;
+  padding: 3px 10px 3px 10px;
+  margin-right: 5px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  background: #F0FDFF;
+  color: #31ACE2;
+}
+#user-manage-div #kkpager a:hover {
+  border: 1px solid #31ACE2;
+  background-color: #31ACE2;
+  color: #fff;
+}
+#user-manage-div #kkpager_gopage_wrap {
+  position: relative;
+  left: 0px;
+  top: 0px;
+}
+#user-manage-div #kkpager_btn_go {
+  width: 44px;
+  height: 18px;
+  border: 0px;
+  overflow: hidden;
+  line-height: 140%;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #31ACE2;
+  color: #FFF;
+  position: absolute;
+  left: 0px;
+  top: -2px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  display: none;
+}
+#user-manage-div #kkpager_btn_go_input {
+  width: 36px;
+  height: 17px;
+  color: #999;
+  text-align: center;
+  margin-left: 1px;
+  margin-right: 2px;
+  border: 1px solid #DFDFDF;
+  position: relative;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  left: 0px;
+  top: 0px;
+  outline: none;
+}
+#user-manage-div #kkpager_btn_go_input.focus {
+  border-color: #31ACE2;
+}
+#user-manage-div #kkpager .pageBtnWrap {
+  float: left;
+}
+#user-manage-div #kkpager .infoTextAndGoPageBtnWrap {
+  float: right;
+}
+#user-manage-div #kkpager .spanDot {
+  float: left;
+  margin-right: 5px;
+}
+#user-manage-div #kkpager .currPageNum {
+  color: #FD7F4D;
+}
+#user-manage-div #kkpager .infoTextAndGoPageBtnWrap {
+  padding-top: 5px;
+}
+#user-manage-div #user-search {
+  margin-top: 100px;
+  text-align: center;
+}
+#user-manage-div #user-search .form-group {
+  margin-right: 5px;
+}
+#user-manage-div #user-list-div .user-list-item .userItem-content button {
+  display: inline-block;
+}
+#user-manage-div #user-list-div .user-list-item .userItem-content .operation {
+  display: inline-block;
+}
+#user-manage-div #user-list-div .user-list-item .break-line {
+  margin: 10px 0;
+  height: 2px;
+  background-color: #8c8c8c;
+  margin-bottom: 15px;
+}
+#user-manage-div #submitModal .modal-dialog {
+  width: 50%;
+}
+#user-manage-div #submitModal .selected {
+  background: #BCD2EE;
+}
+#user-manage-div #submitModal .form-top-height {
+  padding-left: 0px;
+}
+#user-manage-div #submitModal .form-top-height label {
+  padding-left: 0px;
+}
+#user-manage-div #submitModal .form-top-height .alert-danger {
+  background-color: white;
+  border-color: white;
+}
+#user-manage-div #submitModal .form-top-height .alert-success {
+  background-color: white;
+  border-color: white;
+}
+#user-manage-div #submitModal .form-top-height .gender {
+  margin-right: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#user-manage-div #submitModal .form-top-height .error {
+  margin: 0px;
+  padding: 8px 0px 0px 3px;
+  border: none;
+  background: rgba(255, 255, 255, 0);
+}
+#user-manage-div #submitModal .form-top-height .select {
+  border: 1px solid red;
+}
+#user-manage-div #submitModal .form-top-height .school-info {
+  padding: 0px;
+}

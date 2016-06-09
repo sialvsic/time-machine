@@ -1,0 +1,26 @@
+#alert {
+  margin-bottom: 0;
+  position: absolute;
+  top: 25px;
+  left: 0;
+  width: 100%;
+}
+#alert .alert span:nth-child(2) {
+  font-weight: bolder;
+}
+#alert .alert span:nth-child(3) {
+  padding-left: 2%;
+}
+#technology-div .technology-header {
+  margin-left: 15px;
+}
+#technology-div .technology-header p {
+  display: inline-block;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+#technology-div .technology-line {
+  margin-left: 15px;
+  border: 2px solid #8AC024;
+  margin-bottom: 10px;
+}

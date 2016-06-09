@@ -1,0 +1,120 @@
+
+.wrapper-demo {
+  *zoom: 1;
+}
+
+.wrapper-demo:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.wrapper-dropdown {
+  position: relative;
+  line-height: 50px;
+
+  cursor: pointer;
+  outline: none;
+
+  font-weight: bold;
+  color: #fff;
+}
+
+.wrapper-dropdown:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: relative;
+  right: 95px;
+  top: -28px;
+  margin-top: -3px;
+}
+
+.wrapper-dropdown .dropdown {
+  position: absolute;
+  top: 101%;
+  left: 0;
+  right: 0;
+
+  background: white;
+  font-weight: normal;
+  -webkit-transition: all 0.5s ease-in;
+  -moz-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+  list-style: none;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wrapper-dropdown .dropdown:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 100%;
+  right: 90px;
+  border-width: 0 6px 6px 6px;
+  border-style: solid;
+  border-color: #fff transparent;
+}
+
+.wrapper-dropdown .dropdown:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 100%;
+  right: 13px;
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1) transparent;
+}
+
+.wrapper-dropdown .dropdown li a {
+  display: block;
+  text-decoration: none;
+  color: #8aa8bd;
+  border-bottom: 1px solid #e6e8ea;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.wrapper-dropdown .dropdown li i {
+  color: inherit;
+}
+
+.wrapper-dropdown .dropdown li:first-of-type a {
+  border-radius: 7px 7px 0 0;
+}
+
+.wrapper-dropdown .dropdown li:last-of-type a {
+  border: none;
+  border-radius: 0 0 7px 7px;
+}
+
+.wrapper-dropdown .dropdown li:hover a {
+  font-size: 15px;
+  color: rgba(71, 238, 94, 0.87);
+}
+
+.wrapper-dropdown.active .dropdown {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.no-opacity .wrapper-dropdown .dropdown,
+.no-pointerevents .wrapper-dropdown .dropdown {
+  display: none;
+  opacity: 1; /* If opacity support but no pointer-events support */
+  pointer-events: auto; /* If pointer-events support but no pointer-events support */
+}
+
+.no-opacity .wrapper-dropdown.active .dropdown,
+.no-pointerevents .wrapper-dropdown.active .dropdown {
+  display: block;
+}
