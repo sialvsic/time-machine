@@ -74,5 +74,7 @@ jspm_packages
 .idea
 
 /design
-/public
+/public/screeshots
+/public/video
+
 /vediosource
