@@ -6,7 +6,6 @@ var constant = require('../../../../mixin/constant');
 var VideoManageAction = require('../../actions/video-manage/video-manage-actions');
 var VideoManageStore = require('../../store/video-manage/video-manage-store');
 var page = require('page');
-var moment = require('moment');
 
 function getParameter(name) {
   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -25,7 +24,7 @@ var VideoList = React.createClass({
       extension: '',
       size: '',
       category: '',
-      label: 'M',
+      label: '',
       description: '',
       createTime: '',
       _id: ''
@@ -82,6 +81,9 @@ var VideoList = React.createClass({
   handleChange: function (evt) {
     var newState = evt.target.value;
     var stateName = evt.target.name;
+    console.log(newState);
+    console.log(stateName);
+
     this.setState({[stateName]: newState});
   },
 
@@ -243,14 +245,14 @@ var VideoList = React.createClass({
                         className="error alert alert-danger">*</span></label>
                     <div className='form-group'>
                       <div className='col-sm-4 col-md-4' >
-                        <select ref='category' placeholder='类型' name='inputCategory' value={this.state.category}
+                        <select ref='category' placeholder='类型' id='inputCategory' name='category' value={this.state.category}
                             onChange={this.handleChange}    className={'form-control'}>
                           <option value=''>请选择</option>
                           <option value='电视剧'>电视剧</option>
                           <option value='电影'>电影</option>
                           <option value='动漫'>动漫</option>
                           <option value='综艺'>综艺</option>
-                          <option value='博教育士'>教育</option>
+                          <option value='教育'>教育</option>
                         </select>
                       </div>
                     </div>

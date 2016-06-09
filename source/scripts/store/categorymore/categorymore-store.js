@@ -40,6 +40,15 @@ var CategoryMoreStore = Reflux.createStore({
     },{
       html: 'technologysmore.html',
       category: '科技'
+    },{
+      html: 'originalsmore.html',
+      category: '原创'
+    },{
+      html: 'othersmore.html',
+      category: '其他'
+    },{
+      html: 'schoolsmore.html',
+      category: '校园'
     }];
 
     var item = categoryHash.find((item)=> {

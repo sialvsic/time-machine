@@ -27,7 +27,7 @@ var New = React.createClass({
     var newList = this.state.newList.length === 0 ? '' : (<VideoItem videoItems={this.state.newList}/>);
 
     return (
-        <div id="new-div" className="getEducates-fluid">
+        <div id="new-div" className="container-fluid">
           <div className="new-header">
             <p>新闻&nbsp;&nbsp;&nbsp;</p>
             <a href="newsmore.html">更多&gt;&gt;</a>

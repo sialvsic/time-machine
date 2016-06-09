@@ -15,6 +15,9 @@ var Educate = require('./components/educate/educate.component.js');
 var New = require('./components/new/new.component.js');
 var Music = require('./components/music/music.component.js');
 var Technology = require('./components/technology/technology.component.js');
+var School = require('./components/school/school.component.js');
+var Original = require('./components/original/original.component.js');
+var Other = require('./components/other/other.component.js');
 
 var Index = React.createClass({
   componentWillMount: ()=> {
@@ -37,6 +40,9 @@ var Index = React.createClass({
           <New/>
           <Music/>
           <Technology/>
+          <School/>
+          <Original/>
+          <Other/>
           <Footer/>
         </div>
     )

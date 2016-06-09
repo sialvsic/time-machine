@@ -15,6 +15,9 @@ exports.setRoutes = function (app) {
   app.use('/musics', require('./routers/musics'));
   app.use('/technologys', require('./routers/technologys'));
   app.use('/news', require('./routers/news'));
+  app.use('/schools', require('./routers/schools'));
+  app.use('/others', require('./routers/others'));
+  app.use('/originals', require('./routers/originals'));
   app.use('/video', require('./routers/video'));
   app.use('/search', require('./routers/search'));
   app.use('/categorymore', require('./routers/categorymore'));
