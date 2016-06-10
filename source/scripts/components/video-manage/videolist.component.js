@@ -253,6 +253,12 @@ var VideoList = React.createClass({
                           <option value='动漫'>动漫</option>
                           <option value='综艺'>综艺</option>
                           <option value='教育'>教育</option>
+                          <option value='新闻'>新闻</option>
+                          <option value='音乐'>音乐</option>
+                          <option value='科技'>科技</option>
+                          <option value='校园'>校园</option>
+                          <option value='原创'>原创</option>
+                          <option value='其他'>其他</option>
                         </select>
                       </div>
                     </div>

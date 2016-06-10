@@ -60,8 +60,10 @@ router.post('/', (req, res, next) => {
     var fileName = file.fileInfo.originalname;
     var fileType = file.fileInfo.extension;
 
-    if(fileType !== 'mp4' && fileType !=='flv'){
-      res.send({status:403})
+    console.log(file);
+
+    if(fileType !== 'mp4' && fileType !=='flv'&& fileType !=='webm'&& fileType !=='ogv'){
+      res.send({status:403});
       return ;
     }
 
@@ -91,7 +93,7 @@ router.post('/', (req, res, next) => {
                            return ;
                        }
 
-                       if (file.fileInfo.mimetype === 'video/x-flv') {
+                       if (file.fileInfo.mimetype === 'video/x-flv' || file.fileInfo.mimetype === 'application/octet-stream') {
                            file.fileInfo.mimetype = 'video/flv';
                        }
 

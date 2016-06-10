@@ -100,7 +100,7 @@ var Upload = React.createClass({
             <Account/>
           </Navigation>
           <div className="upload-tip">
-            <h3>仅支持上传mp4和flv格式的视频</h3>
+            <h3>仅支持上传mp4/flv/webm/ogv格式的视频</h3>
           </div>
           <div id="fileuploader">Upload</div>
           <div className="panel panel-default well">

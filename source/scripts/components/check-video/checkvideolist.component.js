@@ -249,14 +249,20 @@ var VideoList = React.createClass({
                         className="error alert alert-danger">*</span></label>
                     <div className='form-group'>
                       <div className='col-sm-4 col-md-4' >
-                        <select ref='category' placeholder='类型' name='inputCategory' value={this.state.category}
-                            onChange={this.handleChange}    className={'form-control'}>
+                        <select ref='category' placeholder='类型' id='inputCategory' value={this.state.category}
+                            onChange={this.handleChange}   name='category' className={'form-control'}>
                           <option value=''>请选择</option>
                           <option value='电视剧'>电视剧</option>
                           <option value='电影'>电影</option>
                           <option value='动漫'>动漫</option>
                           <option value='综艺'>综艺</option>
-                          <option value='博教育士'>教育</option>
+                          <option value='教育'>教育</option>
+                          <option value='新闻'>新闻</option>
+                          <option value='音乐'>音乐</option>
+                          <option value='科技'>科技</option>
+                          <option value='校园'>校园</option>
+                          <option value='原创'>原创</option>
+                          <option value='其他'>其他</option>
                         </select>
                       </div>
                     </div>
