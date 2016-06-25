@@ -7,11 +7,14 @@
 ## 项目节点
 
 2016.3.9开始搭框架
-2016.3 - 2016.5 code
+
+2016.3 - 2016.5 coding
+
 2016.6 End
 
 ## 实现的功能
 本系统主要有三大模块构成：用户信息、视频管理、个性分享。
+
 用户管理：
 用户分为三类：注册用户，游客，管理员
 ```
@@ -49,6 +52,7 @@ Node.js的官网为：https://nodejs.org/en/
 
 由于nvm不支持windows，所以提供两个windows 的解决方案
 > nvm-windows ：https://github.com/coreybutler/nvm-windows
+
 > nodist：https://github.com/coreybutler/nvm-windows
 
 - Linux 下安装nvm:
@@ -104,7 +108,7 @@ nvm ls
 查看远程仓库中存在的node 版本：
 
 ```
-nvm ls-remote 
+nvm ls-remote
 ```
 设置node 的版本在任意一个shell中：
 
@@ -116,6 +120,7 @@ nvm alias default 5.0
 
 ###安装ffmpeg
 ffmpeg是一个很全面的视频的处理库，在本项目中大材小用，仅仅用于视频上传的截图。
+
 中文使用说明：https://github.com/FiveYellowMice/how-to-convert-videos-with-ffmpeg-zh/blob/master/02-download-and-install.md
 
 MAC OS下安装：
@@ -125,6 +130,7 @@ MAC OS下安装：
 ```
 
 官方的安装说明网址：https://trac.ffmpeg.org/wiki/CompilationGuide/MacOSX
+
 其他的参考网址：http://depthlove.github.io/2015/09/24/install-ffmpeg-to-MacOSX-and-use-ffmpeg-to-transform-h264-to-mp4/
 
 
@@ -151,7 +157,7 @@ make[1]: *** [vpx_dsp/x86/vpx_subpixel_8t_intrin_avx2.c.o] 错误 1
 ```
 解决方法：
 ```
-./configure --prefix="$HOME/ffmpeg_build" --disable-examples --disable-avx2 
+./configure --prefix="$HOME/ffmpeg_build" --disable-examples --disable-avx2
 ```
 在安装FFmpeg时的git clone 地址不对：
 网页上的使用地址为：
@@ -164,6 +170,7 @@ git clone https://git.ffmpeg.org/ffmpeg.git
 ```
 以上地址链接为：
 ffmpeg官网： https://ffmpeg.org/download.html#repositories
+
 因为安装过程中需要编译，所以较慢。整个过程可能需要1个多小时。
 
 ###安装MongoDB
@@ -202,17 +209,29 @@ mongodb
 
 项目的文件结构：
 (1) .git 文件夹： git 的版本管理的自生成文件夹
+
 (2) .idea 文件夹： IDE 自生成文件夹
+
 (3) config 文件夹： 项目提取出的配置文件
+
 (4) controller 文件夹： 项目的控制器， 包含所有的路由处理的逻辑代码
+
 (5) result： 结果样图
+
 (6) gulp： gulp 的配置文件夹
+
 (7) middleware： 提取出的中间件， 用于异常错误处理
+
 (8) node_modules： npm 安装的插件目录
+
 (9) public： Web 前端的资源目录
+
 (10) routes： 路由分发
+
 (11) services： 服务层， 用于数据库的连接
+
 (12) source： 前端代码文件
+
 (13) tools： 提取出的工具类
 
 
@@ -221,17 +240,17 @@ mongodb
 **前端实现**：
     public文件夹下新建html 文件作为浏览器的展示页面，因为前端开发还使用了 React 框架， 所以在source 文件夹下按照 React + Reflux 的模式书写前端 Javascript 代码。 在 source 下的 scripts 文件夹内编写 JSX 语法的 React 代码， 通过 gulp 的编译， 压缩并转换为 Javascript 代码， 放置到 public 下的 scripts文件夹内。
     样式文件使用 less 工具编写。在 less 文件夹内编写相应的 less 文件并利用 gulp 编译为 css， 将其放置到 public 下的 css 文件夹内， 在 html 文件中只需引入 css 和 Javascript 代码， 即可开发出一个前端网页。
-    
+
 **后端实现**：
     使用 Ajax 完成与后端数据的交互。 系统使用 Ajax 发送请求到 routers（ 路由文件）处， routers 根据请求 URL 的不同， 分配到相应的 controller 进行逻辑和业务处理， 后台完成处理后返回 json 格式的数据给前端的发送请求的地方， 前端得到的 json 数据进行处理， 重新渲染页面。
 
 **数据库实现**：
     数据库的操作使用mongoose(一个操作mongodb数据库的ORM框架)，具体操作详见官网文档
-    
-    
+
+
 ###项目配置
 **此小节和下一个小节的区别在于，本小节在叙述如何利用一个已经存在的项目代码，配置并使其可以运行，而下一小节（从0开始的项目搭建）在于叙述从一开始没有任何一句代码时的项目初始。**
-    
+
 1. 安装git
 2. 使用以下命令在某一文件夹下的clone项目库
 
@@ -252,14 +271,14 @@ npm install
 ```
 此命令会自动根据package.json中的dependencies和devdependencies中的
 
-3. 首先执行以下命令 ，用于项目前端代码的构建
+4. 首先执行以下命令 ，用于项目前端代码的构建
 
 ```
 gulp build
 ```
-4. 启动mongdb数据库，这个因为不同的系统，不同安装方式略有差异，比如在Linux Centos 上
+5. 启动mongdb数据库，这个因为不同的系统，不同安装方式略有差异，比如在Linux Centos 上
 mongodb 安装到了/home/rjgc/mongodb-linux-i686-3.2.6/处
-启动mongodb ，需要使用 root 账户 
+启动mongodb ，需要使用 root 账户
 
 ```
 cd /home/rjgc/mongodb-linux-i686-3.2.6/bin
@@ -271,7 +290,7 @@ cd /home/rjgc/mongodb-linux-i686-3.2.6/bin
  ./mongod --journal --storageEngine=mmapv1 --dbpath /data/db
 ```
 
-5. 在项目的根目录下执行：
+6. 在项目的根目录下执行：
 
 ```
 npm start
@@ -288,7 +307,7 @@ package.json为npm 包管理的一个配置文件，详情请见https://docs.npm
 有关npm的说明及其使用可以参考：
 官网：https://docs.npmjs.com/files/package.json
 深入浅出Node.js（二）：Node.js&NPM的安装与配置：http://www.infoq.com/cn/articles/nodejs-npm-install-config
-npm 模块安装机制简介： http://www.ruanyifeng.com/blog/2016/01/npm-install.html	
+npm 模块安装机制简介： http://www.ruanyifeng.com/blog/2016/01/npm-install.html
 NPM 使用介绍：http://www.runoob.com/nodejs/nodejs-npm.html
 
 3. 因为本项目使用git 作为版本管理的工具，所以需要初始化git管理库
@@ -301,9 +320,8 @@ NPM 使用介绍：http://www.runoob.com/nodejs/nodejs-npm.html
 
 有关于git 的使用可以参考如下的网址：
 
-
 4. 使用Node.js开发最大的特色的就是完善的社区和插件包
-本系统的服务器端是使用Express框架，首先需要安装Express，注意在本项目中，所有的包的安装都是通过npm install 命令来安装在命令行中执行 
+本系统的服务器端是使用Express框架，首先需要安装Express，注意在本项目中，所有的包的安装都是通过npm install 命令来安装在命令行中执行
 
 ```
 npm install express --save
