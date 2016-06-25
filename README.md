@@ -252,6 +252,7 @@ mongodb
 **此小节和下一个小节的区别在于，本小节在叙述如何利用一个已经存在的项目代码，配置并使其可以运行，而下一小节（从0开始的项目搭建）在于叙述从一开始没有任何一句代码时的项目初始。**
 
 1.安装git
+
 2.使用以下命令在某一文件夹下的clone项目库
 
 ```
@@ -264,6 +265,7 @@ git clone git@github.com:sialvsic/time-machine.git
 git clone https://github.com/sialvsic/time-machine.git
 ```
 以上两条命令是用于将项目的库中所有代码从github中通过的clone 的方式拷贝到本地
+
 3.在命令行中使用如下命令进行所有插件的安装
 
 ```
@@ -276,6 +278,7 @@ npm install
 ```
 gulp build
 ```
+
 5.启动mongdb数据库，这个因为不同的系统，不同安装方式略有差异，比如在Linux Centos 上
 mongodb 安装到了/home/rjgc/mongodb-linux-i686-3.2.6/处
 启动mongodb ，需要使用 root 账户
@@ -301,13 +304,19 @@ npm start
 ###从0开始的项目搭建：
 
 1.选择硬盘，新建文件夹，名称自定义，作为工程文件的根目录
+
 2.打开命令行，进入项目目录，执行npm init 命令初始化一个node工程，会在根目录下生成一个package.json的文件
 注：
 package.json为npm 包管理的一个配置文件，详情请见https://docs.npmjs.com/files/package.json）
+
 有关npm的说明及其使用可以参考：
+
 官网：https://docs.npmjs.com/files/package.json
+
 深入浅出Node.js（二）：Node.js&NPM的安装与配置：http://www.infoq.com/cn/articles/nodejs-npm-install-config
+
 npm 模块安装机制简介： http://www.ruanyifeng.com/blog/2016/01/npm-install.html
+
 NPM 使用介绍：http://www.runoob.com/nodejs/nodejs-npm.html
 
 3.因为本项目使用git 作为版本管理的工具，所以需要初始化git管理库
@@ -332,11 +341,15 @@ npm install express --save
 
 注：
 Express框架：http://expressjs.com/en/index.html or http://expressjs.com/
+
 Express中文网站：http://expressjs.com/zh/
 
 5.根目录下， 新建 README.md， 用于记录项目介绍
+
 6.根目录下， 新建.gitignore 用于忽略 git 追踪的文件夹
+
 7.根目录下， 新建 nodemon.json 用于配置 nodemon 的选项
+
 8.根目录下， 新建 app.js， 写入如下代码：
 
 ```
@@ -370,6 +383,7 @@ mongoConn.start(config.database);
 之后， 在命令行中执行 node app.js 即可启动一个用 Express 搭建的 Web 服务器。
 
 9.根据npm install 命令来安装各种插件
+
 本项目使用的了大量的插件或者第三方的库，可参见package.json文件。
 
 ##结果预览
