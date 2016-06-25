@@ -81,6 +81,7 @@ VideoController.prototype.getVideo = (req, res, next) => {
         }, {
             starStatus: starStatus
         });
+         console.log(videoNewInfo);
         res.send(videoNewInfo);
     });
 };
@@ -216,7 +217,7 @@ VideoController.prototype.popVideo = (req, res, next) => {
       var idList = doc.map((item)=>{
         return item._id;
       })
-
+       console.log(arr);
       res.send({
         popList:arr,
         idList:idList
